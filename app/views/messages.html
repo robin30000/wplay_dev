@@ -1,0 +1,16 @@
+<!--<span ng-if='objectName.$invalid && objectName.$dirty' class="glyphicon glyphicon-remove form-control-feedback"></span>
+<span ng-if='objectName.$valid' class="glyphicon glyphicon-ok form-control-feedback"></span>-->
+
+<div class="help-block" ng-messages="objectName.$error" ng-show="objectName.$touched">
+  <div class="messages">
+    <div ng-message="required">Campo Requerido</div>
+    <div ng-message="minlength">Campo demasiado Corto</div>
+    <div ng-message="maxlength">Campo demasiado Largo</div>
+    <div ng-message="number">Campo numérico</div>
+    <div ng-message="email">Correo Invalido</div>
+    <div ng-message="equal">Debe ser igual al campo anterior</div>
+    <div ng-message="pattern">La contraseña debe tener mínimo 6 digitos de longitud, entre letras y números</div>
+    <div ng-message="date">La fecha es inválida</div>
+    <div ng-message="numbersOnly">Campo numérico</div>
+  </div>
+</div>

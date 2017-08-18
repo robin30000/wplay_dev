@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <button aria-hidden="true" ng-click="message.close()" class="close" type="button">×</button>
+  <h4 class="modal-title">{{message.header}}</h4>
+</div>
+<div class="modal-body">
+  <form role="form" class="form-horizontal">
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Remitente</label>
+      <div class="col-lg-10">
+        <label class="form-control">{{message.from}}</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Fecha</label>
+      <div class="col-lg-10">
+        <label class="form-control">{{message.date}}</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Mensaje</label>
+      <div class="col-lg-10">
+        <textarea rows="10" cols="30" class="form-control" id="" name="" readonly>{{message.body}}</textarea>
+      </div>
+    </div>
+
+    <div class="form-group text-center">
+      <button class="btn btn-wplay" ng-click="message.close()" type="submit">Cerrar</button>
+    </div>
+  </form>
+</div>

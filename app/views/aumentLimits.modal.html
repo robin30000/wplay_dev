@@ -1,0 +1,75 @@
+<div class="modal-header">
+    <button aria-hidden="true" ng-click="aumentLimits.close()" class="close" type="button">×</button>
+    <h4 class="modal-title">Deseo aumentar mis limites de deposito
+        <small style="color: #FFF;"><i> puede simular los valores que desea en sus limites de deposito, una vez enviada
+            la solicitud nuestros operadores la validaran y en menos de 72 horas tendrá una respuesta</i></small>
+    </h4>
+</div>
+<div class="row game-info">
+    <div class="row">
+        <div class="col-md-12">
+            <form name="betLimitDepositFormPet" class="form-horizontal"
+                  ng-submit="aumentLimits.savebetLimitDeposit()">
+                <div class="form-group">
+                    <label for="daybetLimit" class="col-sm-5 control-label text-right">Límite
+                        deposito diario (24 hrs):
+                        <img src="app/img/common/img-money.png"/></label>
+                    <div class="col-sm-7">
+                        <select class="form-control" id="daybetLimitDeposit"
+                                ng-model="aumentLimits.dayLimitDeposit"
+                                ng-options="betLimit.valor as betLimit.valor|number for betLimit in aumentLimits.rangeDaybetLimitDeposit"
+                                required>
+                            <option value="">Seleccionar Valor</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="weekbetLimit" class="col-sm-5 control-label text-right">Límite
+                        deposito semanal (7 días):
+                        <img src="app/img/common/img-money.png"/></label>
+                    <div class="col-sm-7">
+                        <select class="form-control" id="weekLimitDeposit"
+                                ng-model="aumentLimits.weekLimitDeposit"
+                                ng-options="betLimit.valor as betLimit.valor|number for betLimit in aumentLimits.rangeWeekbetLimitDeposit"
+                                required>
+                            <option value="">Seleccionar Valor</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="monthbetLimit" class="col-sm-5 control-label text-right">Límite
+                        deposito mensual (30 días):
+                        <img src="app/img/common/img-money.png"/></label>
+                    <div class="col-sm-7">
+                        <select class="form-control" id="monthLimitDeposit"
+                                ng-model="aumentLimits.monthLimitDeposit"
+                                ng-options="betLimit.valor as betLimit.valor|number for betLimit in aumentLimits.rangeMonthbetLimitDeposit"
+                                required>
+                            <option value="">Seleccionar Valor</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputbetLimitPassword"
+                           class="col-sm-5 control-label text-right">Contraseña:
+                        <img src="app/img/common/img-password.png"/></label>
+                    <div class="col-sm-7">
+                        <input type="password" class="form-control"
+                               ng-model="aumentLimits.betLimitDepositPassword"
+                               id="inputLimitDepositPassword" placeholder="Contraseña" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                        <button ng-click="aumentLimits.close()" class="btn btn-wplay-alt">Cancelar</button>
+                        <button type="submit" class="btn btn-wplay"
+                                ng-disabled="!betLimitDepositFormPet.$valid">Enviar solicitud
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

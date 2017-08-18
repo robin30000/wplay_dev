@@ -1,0 +1,459 @@
+<div class="container-fluid">
+    <div header></div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="register">
+            <div class="row">
+                <div class="col-md-12 header">
+                    <span>Registro</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 body">
+                    <div class="detail">
+                        <div class="row">
+                            <span class="col-md-12 title">Datos para el registro</span>
+                            <p class="col-md-12">La información suministrada en este formulario, será tenida en cuenta
+                                al momento de redimir sus ganancias, por ello la veracidad de la misma, es factor
+                                fundamental que nos reserva el derecho a otorgar y pagar los premios respectivos. Lo
+                                invitamos a diligenciar todos los datos que les solicitamos, y si tiene alguna duda al
+                                respecto, por favor comuníquese con nosotros por los canales que tenemos dispuestos para
+                                usted (chat en línea, correo electrónico)</p>
+                            <label class="col-md-12">Datos de usuario: Los campos con (*) son obligatorios</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row steps text-center">
+                                    <div class="col-xs-4 col-xs-offset-0 col-md-3 col-md-offset-1">
+                                        <span ng-click="register.selectTab(1)" class="glyphicon"
+                                              ng-class="{'current': register.activeTab == 1 }">1</span>
+                                        <div class="line-right"></div>
+                                    </div>
+                                    <div class="col-xs-4 col-md-4">
+                                        <div class="line-left"></div>
+                                        <span ng-click="register.selectTab(2)" class="glyphicon"
+                                              ng-class="{'current': register.activeTab == 2 }">2</span>
+                                        <div class="line-right"></div>
+                                    </div>
+                                    <div class="col-xs-4 col-md-3">
+                                        <div class="line-left"></div>
+                                        <span ng-click="register.selectTab(3)" class="glyphicon"
+                                              ng-class="{'current': register.activeTab == 3 }">3</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div growl reference="1" inline="true" class="col-md-12"></div>
+                            <div ng-class="{'current': register.activeTab == 1 }" class="tab-1">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form name="stepOneForm" ng-submit="register.nextStep()">
+                                                <div class="row">
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.firstName.$dirty ? (stepOneForm.firstName.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputFirstName">* Primer Nombre:</label>
+                                                        <input type="text" class="form-control" id="inputFirstName"
+                                                               name="firstName" placeholder="Primer Nombre"
+                                                               ng-model="register.stepOne.firstName" required alfa-only>
+                                                        <error-messages name="stepOneForm.firstName"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label for="inputSecondName">Segundo Nombre:</label>
+                                                        <input type="text" class="form-control" id="inputSecondName"
+                                                               placeholder="Segundo Nombre"
+                                                               ng-model="register.stepOne.secondName" alfa-only>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.lastname.$dirty ? (stepOneForm.lastname.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputLastName">* Primer Apellido:</label>
+                                                        <input type="text" class="form-control" id="inputLastName"
+                                                               name="lastname" placeholder="Primer Apellido"
+                                                               ng-model="register.stepOne.lastname" required alfa-only>
+                                                        <error-messages name="stepOneForm.lastname"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label for="inputSecondLastName">Segundo Apellido:</label>
+                                                        <input type="text" class="form-control" id="inputSecondLastName"
+                                                               placeholder="Segundo Apellido"
+                                                               ng-model="register.stepOne.secondLastname" alfa-only>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.gender.$dirty ? (stepOneForm.gender.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputGender">* Sexo:</label>
+                                                        <select class="form-control" name="gender" id="inputGender"
+                                                                ng-model="register.stepOne.gender" required>
+                                                            <option value="">Escoja opción</option>
+                                                            <option value="1">Masculino</option>
+                                                            <option value="2">Femenino</option>
+                                                        </select>
+                                                        <error-messages name="stepOneForm.gender"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.documentType.$dirty ? (stepOneForm.documentType.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputDocumentType">* Tipo Documento:</label>
+                                                        <select class="form-control" name="documentType"
+                                                                id="inputDocumentType"
+                                                                ng-model="register.stepOne.documentType" required>
+                                                            <option value="">Escoja opción</option>
+                                                            <option value="1">Cedula de Ciudadanía</option>
+                                                            <option value="2">Cedula de Extranjería</option>
+                                                        </select>
+                                                        <error-messages name="stepOneForm.documentType"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div ng-if="register.stepOne.documentType == 2"
+                                                         class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.duedate.$dirty ? (stepOneForm.duedate.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputDateExp">* Fecha Vencimiento:</label>
+                                                        <p class="input-group">
+                                                            <input type="text" name="duedate" class="form-control"
+                                                                   uib-datepicker-popup="{{register.format}}"
+                                                                   ng-model="register.stepOne.duedate"
+                                                                   is-open="register.duedate.opened"
+                                                                   datepicker-options="register.dateOptions"
+                                                                   ng-required="true" close-text="Close"/>
+                                                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default"
+                                        ng-click="register.open(register.duedate)"><i
+                                        class="glyphicon glyphicon-calendar"></i></button>
+                              </span>
+                                                        </p>
+                                                        <error-messages name="stepOneForm.duedate"
+                                                                        class="error-date"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.identity.$dirty ? (stepOneForm.identity.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputIdentity">* Nº Identificación:</label>
+                                                        <input type="text" class="form-control" id="inputIdentity"
+                                                               name="identity" placeholder="Documento Identidad"
+                                                               ng-model="register.stepOne.identity" numbers-only
+                                                               required ng-maxlength="12" minlength="6">
+                                                        <error-messages name="stepOneForm.identity"></error-messages>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.departmentExp.$dirty ? (stepOneForm.departmentExp.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputDepartmentExp">* Departamento Expedición:
+                                                        </label>
+                                                        <select class="form-control" id="inputDepartmentExp"
+                                                                name="departmentExp"
+                                                                ng-model="register.stepOne.departmentExp"
+                                                                ng-change="register.setDepartmentExp()"
+                                                                ng-options="department.depto_id as department.depto_nom for department in register.departmentsDueDate"
+                                                                required>
+                                                            <option value="">Escoja opción</option>
+                                                        </select>
+                                                        <error-messages name="stepOneForm.departmentExp"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.city.$dirty ? (stepOneForm.city.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputCityExp">* Ciudad Expedición:</label>
+                                                        <select class="form-control" id="inputCityExp" name="city"
+                                                                ng-model="register.stepOne.city"
+                                                                ng-options="city.ciudad_id as city.ciudad_nom for city in register.citiesExp"
+                                                                required>
+                                                            <option value="">Escoja opción</option>
+                                                        </select>
+                                                        <error-messages name="stepOneForm.city"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.date.$dirty ? (stepOneForm.date.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputDateExp">* Fecha Expedición:</label>
+                                                        <p class="input-group">
+                                                            <input type="text" name="date" class="form-control"
+                                                                   uib-datepicker-popup="{{register.format}}"
+                                                                   ng-model="register.stepOne.dateExp"
+                                                                   is-open="register.dateExp.opened"
+                                                                   datepicker-options="register.dateOptions"
+                                                                   ng-required="true" close-text="Close"
+                                                                   id="inputDateExp"/>
+                                                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default"
+                                        ng-click="register.open(register.dateExp)"><i
+                                        class="glyphicon glyphicon-calendar"></i></button>
+                              </span>
+                                                        </p>
+                                                        <error-messages name="stepOneForm.date"
+                                                                        class="error-date"></error-messages>
+                                                    </div>
+                                                    <!--<div class="form-group col-md-3">
+                                                        <label for="inputFile">Anexe copia Documento de
+                                                            Identidad</label>
+                                                        <input lang="es" type="file" id="inputFile"
+                                                               class="form-control">
+                                                    </div>-->
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-md-12">
+                                                        <button type="submit" class="btn btn-wplay"
+                                                                ng-disabled="!stepOneForm.$valid">Continuar
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-class="{'current': register.activeTab == 2 }" class="tab-2">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form name="stepTwoForm" ng-submit="register.nextStep()">
+                                                <div class="row">
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepTwoForm.country.$dirty ? (stepTwoForm.country.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputCountry">* Nacionalidad:</label>
+                                                        <select class="form-control" id="inputCountry"
+                                                                name="countryFrom"
+                                                                ng-options="country.pais_id as country.pais_nom for country in register.countries"
+                                                                ng-model="register.stepTwo.country"
+                                                                ng-change="register.setCountry()"
+                                                                required>
+                                                            <option value="">Seleccione opción</option>
+                                                        </select>
+                                                        <error-messages name="stepTwoForm.country"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepTwoForm.departmentFrom.$dirty ? (stepTwoForm.departmentFrom.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputDepartmentFrom">* Departamento Nacimiento:
+                                                        </label>
+                                                        <select class="form-control" id="inputDepartmentFrom"
+                                                                name="departmentFrom"
+                                                                ng-model="register.stepTwo.departmentFrom"
+                                                                ng-change="register.setDepartmentFrom()"
+                                                                ng-options="department.depto_id as department.depto_nom for department in register.departmentsFrom"
+                                                                required>
+                                                            <option value="">Seleccione opción</option>
+                                                        </select>
+                                                        <error-messages name="stepTwoForm.departmentFrom"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepTwoForm.cityFrom.$dirty ? (stepTwoForm.cityFrom.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputCityFrom">* Ciudad de Nacimiento:</label>
+                                                        <select class="form-control" id="inputCityFrom" name="cityFrom"
+                                                                ng-model="register.stepTwo.cityFrom"
+                                                                ng-options="city.ciudad_id as city.ciudad_nom for city in register.citiesFrom"
+                                                                required>
+                                                            <option value="">Seleccione opción</option>
+                                                        </select>
+                                                        <error-messages name="stepTwoForm.cityFrom"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepTwoForm.birthDate.$dirty ? (stepTwoForm.birthDate.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputBirthDate">* Fecha Nacimiento:</label>
+                                                        <p class="input-group">
+                                                            <input type="text" name="birthDate" class="form-control"
+                                                                   uib-datepicker-popup="{{register.format}}"
+                                                                   ng-model="register.stepTwo.birthDate"
+                                                                   is-open="register.birthDate.opened"
+                                                                   datepicker-options="register.dateOptions"
+                                                                   ng-required="true" close-text="Close"
+                                                                   id="inputBirthDate"/>
+                                                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default"
+                                        ng-click="register.open(register.birthDate)"><i
+                                        class="glyphicon glyphicon-calendar"></i></button>
+                              </span>
+                                                        </p>
+                                                        <error-messages name="stepTwoForm.birthDate"
+                                                                        class="error-date"></error-messages>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepTwoForm.department.$dirty ? (stepTwoForm.department.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputDepartment">* Departamento Residencia:</label>
+                                                        <select class="form-control" name="department"
+                                                                id="inputDepartment"
+                                                                ng-model="register.stepTwo.department"
+                                                                ng-change="register.setDepartment()"
+                                                                ng-options="department.depto_id as department.depto_nom for department in register.departments"
+                                                                required>
+                                                            <option value="">Seleccion opción</option>
+                                                        </select>
+                                                        <error-messages name="stepTwoForm.department"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepTwoForm.city.$dirty ? (stepTwoForm.city.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputCity">* Ciudad Residencia:</label>
+                                                        <select class="form-control" id="inputCity" name="city"
+                                                                ng-model="register.stepTwo.city"
+                                                                ng-options="city.ciudad_id as city.ciudad_nom for city in register.cities"
+                                                                required>
+                                                            <option value="">Seleccione opción</option>
+                                                        </select>
+                                                        <error-messages name="stepTwoForm.city"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepTwoForm.zipcode.$dirty ? (stepTwoForm.zipcode.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputZipcode">* Código Postal</label>
+                                                        <select class="form-control" id="inputZipcode" name="zipcode"
+                                                                ng-model="register.stepTwo.zipcode"
+                                                                ng-options="zipcode.id_codigo_postal as zipcode.codigos for zipcode in register.zipcodes"
+                                                                required>
+                                                            <option value="">Seleccione opción</option>
+                                                        </select>
+                                                        <error-messages name="stepTwoForm.zipcode"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepTwoForm.address.$dirty ? (stepTwoForm.address.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputAddress">* Dirección Residencia:</label>
+                                                        <input type="text" class="form-control" id="inputAddress"
+                                                               name="address" ng-model="register.stepTwo.address"
+                                                               placeholder="Dirección" required>
+                                                        <error-messages name="stepTwoForm.address"></error-messages>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="form-group col-md-12">
+                                                        <button type="submit" class="btn btn-wplay"
+                                                                ng-disabled="!stepTwoForm.$valid">Continuar
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-class="{'current': register.activeTab == 3 }" class="tab-3">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <form name="stepThreeForm" ng-submit="register.submit()">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div ng-class="stepThreeForm.email.$dirty ? stepThreeForm.email.$valid ? 'has-success' : 'has-error': ''"
+                                                         class="form-group col-md-3">
+                                                        <label for="inputEmail">* Email:</label>
+                                                        <input type="email" class="form-control" name="email"
+                                                               id="inputEmail" placeholder="Email"
+                                                               ng-model="register.stepThree.email" required>
+                                                        <error-messages name="stepThreeForm.email"></error-messages>
+                                                    </div>
+                                                    <div ng-class="stepThreeForm.emailc.$dirty ? stepThreeForm.emailc.$valid ? 'has-success' : 'has-error': ''"
+                                                         class="form-group col-md-3">
+                                                        <label for="inputEmail2">* Confirmar Email:</label>
+                                                        <input type="email" class="form-control" name="emailc"
+                                                               id="inputEmail2" placeholder="Email"
+                                                               ng-model="register.stepThree.emailc"
+                                                               equal="register.stepThree.email" required
+                                                               ng-paste="$event.preventDefault()">
+                                                        <error-messages name="stepThreeForm.emailc"></error-messages>
+                                                    </div>
+                                                    <div ng-class="stepThreeForm.phone.$dirty ? stepThreeForm.phone.$valid ? 'has-success' : 'has-error': ''"
+                                                         class="form-group col-md-3">
+                                                        <label for="inputTel">Teléfono Fijo:</label>
+                                                        <input type="text" class="form-control" id="inputTel"
+                                                               name="phone" placeholder="Teléfono"
+                                                               ng-model="register.stepThree.phone" numbers-only
+                                                               ng-maxlength="12" minlength="6">
+                                                        <error-messages name="stepThreeForm.phone"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div ng-class="stepThreeForm.mobile.$dirty ? stepThreeForm.mobile.$valid ? 'has-success' : 'has-error': ''"
+                                                         class="form-group col-md-3">
+                                                        <label for="inputMobile">* Teléfono Movil:</label>
+                                                        <input type="text" class="form-control" id="inputMobile"
+                                                               name="mobile" placeholder="Celular"
+                                                               ng-model="register.stepThree.mobile" numbers-only
+                                                               required ng-maxlength="12" minlength="6">
+                                                        <error-messages name="stepThreeForm.mobile"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div ng-class="stepThreeForm.password.$dirty ? stepThreeForm.password.$valid ? 'has-success' : 'has-error': ''"
+                                                         class="form-group col-md-3">
+                                                        <label for="inputPassword">* Contraseña:</label>
+                                                        <input type="password" class="form-control" id="inputPassword"
+                                                               name="password" placeholder="Contraseña"
+                                                               ng-model="register.stepThree.password" required
+                                                               ng-pattern="/(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[a-zA-Z]).*$/">
+                                                        <error-messages name="stepThreeForm.password"></error-messages>
+                                                    </div>
+                                                    <div ng-class="stepThreeForm.passwordc.$dirty ? stepThreeForm.passwordc.$valid ? 'has-success' : 'has-error': ''"
+                                                         class="form-group col-md-3">
+                                                        <label for="inputPassword2">* Confirmar Contraseña:</label>
+                                                        <input type="password" class="form-control" id="inputPassword2"
+                                                               name="passwordc" placeholder="Contraseña"
+                                                               ng-model="register.stepThree.passwordc"
+                                                               equal="register.stepThree.password" required
+                                                               ng-paste="$event.preventDefault()">
+                                                        <error-messages name="stepThreeForm.passwordc"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3" ng-show="register.segmen">
+                                                        <label for="inputReference">Ha sido referido por:</label>
+                                                        <input type="text" class="form-control" id="inputReference"
+                                                               placeholder="Referido por:"
+                                                               ng-model="register.stepThree.referred">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-md-4">
+                                                        <div vc-recaptcha theme="'light'" key="register.model.key"
+                                                             on-create="register.setWidgetId(widgetId)"
+                                                             on-success="register.setResponse(response)"
+                                                             on-expire="register.cbExpiration()" lang="es"></div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <span class="glyphicon glyphicon-refresh center
+" aria-hidden="true" ng-click="register.cbExpiration()" style="font-size: 4rem;margin: 1rem 0 0 0.7rem;"></span>reCaptcha
+                                                    </div>
+                                                    <div class="form-group col-md-7">
+                                                        <ul style="list-style: none;padding-left: 0">
+                                                            <li>
+                                                                <input class="col-md-1" type="checkbox"
+                                                                       ng-model="register.stepThree.des" required>Declaro
+                                                                que no poseo enfermedades mentales ni adicción al juego
+                                                            </li>
+                                                            <li>
+                                                                <div class="accept">
+                                                                    <input class="col-md-1" type="checkbox"
+                                                                           ng-model="register.stepThree.tyc" required>Soy
+                                                                    mayor de 18 años y he leído y aceptado los <a
+                                                                        ng-click="register.openTerms()">términos y
+                                                                    condiciones</a> generales de wplay.co
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-12 text-center">
+                                                    <button type="submit" class="btn btn-wplay"
+                                                            ng-disabled="!stepOneForm.$valid || !stepTwoForm.$valid  || !stepThreeForm.$valid ">
+                                                        Enviar Información
+                                                    </button>
+                                                    <!--!stepThreeForm.$valid && !register.stepOne.complete && !register.stepTwo.complete-->
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<h1>{{ $ctrl.hello }}</h1>-->
+<div footer></div>

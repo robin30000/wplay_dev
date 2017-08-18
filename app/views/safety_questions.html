@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div header></div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="forget-password">
+            <div class="hidden-xs row">
+                <div class="col-md-12 header">
+                    <span>Preguntas de seguridad</span>
+                </div>
+            </div>
+            <div class="row body">
+                <div class="col-md-8 col-md-offset-1 detail">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Preguntas de seguridad</h4>
+                                    <p>Para mantener la seguridad de su cuenta, responda las siguientes preguntas, tenga en cuenta que son necesarias para algunas operaciones en WPlay.co
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <form>
+                                            <div class="col-md-12 form-group">
+                                                <label for="answerOne">{{questions.questionOne.pregunta}}</label>
+                                                <input type="text" class="form-control" id="answerOne" ng-model="questions.questionOne.answer" placeholder="Respuesta" required>
+                                            </div>
+                                            <div class="col-md-12 form-group">
+                                                <label for="answerTwo">{{questions.questionTwo.pregunta}}</label>
+                                                <input type="text" class="form-control" id="answerTwo" ng-model="questions.questionTwo.answer" placeholder="Respuesta" required>
+                                            </div>
+                                            <div class="col-md-12 form-group">
+                                                <label for="answerThree">{{questions.questionThree.pregunta}}</label>
+                                                <input type="text" class="form-control" id="answerThree" ng-model="questions.questionThree.answer" placeholder="Respuesta" required>
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <button type="submit" ng-click="questions.submit()" class="btn btn-block btn-wplay">Guardar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div footer></div>

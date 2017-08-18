@@ -1,0 +1,6 @@
+.cs-select li:nth-child(6) a,.cs-select li:nth-child(6) a::before,.cs-select.cs-active li:first-child a,.cs-select.cs-active li:first-child a::before{-webkit-transition-delay:0s;transition-delay:0s}
+.cs-select li:nth-child(5) a,.cs-select li:nth-child(5) a::before,.cs-select.cs-active li:nth-child(2) a,.cs-select.cs-active li:nth-child(2) a::before{-webkit-transition-delay:.05s;transition-delay:.05s}
+.cs-select li:nth-child(4) a,.cs-select li:nth-child(4) a::before,.cs-select.cs-active li:nth-child(3) a,.cs-select.cs-active li:nth-child(3) a::before{-webkit-transition-delay:.1s;transition-delay:.1s}
+.cs-select li:nth-child(3) a,.cs-select li:nth-child(3) a::before,.cs-select.cs-active li:nth-child(4) a,.cs-select.cs-active li:nth-child(4) a::before{-webkit-transition-delay:.15s;transition-delay:.15s}
+.cs-select li:nth-child(2) a,.cs-select li:nth-child(2) a::before,.cs-select.cs-active li:nth-child(5) a,.cs-select.cs-active li:nth-child(5) a::before{-webkit-transition-delay:.2s;transition-delay:.2s}
+.cs-select li:first-child a,.cs-select li:first-child a::before,.cs-select.cs-active li:nth-child(6) a,.cs-select.cs-active li:nth-child(6) a::before{-webkit-transition-delay:.25s;transition-delay:.25s}

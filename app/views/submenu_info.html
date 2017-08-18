@@ -1,0 +1,42 @@
+<div class="submenu">
+    <ul class="hidden-xs">
+        <li ng-class="menu.getClass('/info/consulta-apuestas')">
+            <a href="/info/consulta-apuestas">Consulta de apuestas</a>
+        </li>
+        <li ng-class="menu.getClass('/info/terminos-condiciones')">
+            <a href="/info/terminos-condiciones">Términos y condiciones</a>
+        </li>
+        <li ng-class="menu.getClass('/info/preguntas-frecuentes')">
+            <a href="/info/preguntas-frecuentes">Preguntas frecuentes</a>
+        </li>
+    </ul>
+    <div class="visible-xs-block mobile">
+        <div class="mobile-submenu">
+            <div class="row main-buttons">
+                <div class="col-xs-6 btn active">
+                    <a href="submenu/1">
+                        Cuenta juego
+                    </a>
+                </div>
+                <div class="col-xs-6 btn">
+                    <a href="submenu/2">
+                        Consultas
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div ng-class="menu.active ? 'cs-active':''" class="cs-select" tabindex="0">
+            <a ng-click="menu.showMenu()" class="cs-placeholder">{{menu.currentItem}}</a>
+            <div class="cs-options">
+                <ul>
+                    <li ng-class="menu.getClassMob('/info/consulta_apuestas','CONSULTA DE TICKETS')"><a
+                            href="info/consulta-tickets">Consulta de apuestas</a></li>
+                    <li ng-class="menu.getClassMob('/info/terminos_condiciones','TÉRMINOS Y CONDICIONES')"><a
+                            href="info/terminos-condiciones">Términos y condiciones</a></li>
+                    <li ng-class="menu.getClassMob('/info/preguntas_frecuentes','PREGUNTAS FRECUENTES')"><a
+                            href="info/preguntas-frecuentes">Preguntas frecuentes</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,173 @@
+<div class="container-fluid">
+  <div header></div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="register">
+      <div class="row">
+        <div class="col-md-12 header">
+          <span>Registrarse</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 body">
+          <div class="detail">
+            <div class="row">
+              <span class="col-md-12 title">Datos para el registro</span>
+              <p class="col-md-12">La información suministrada en este formulario, será tenida en cuenta al momento de redimir sus ganancias, por ello la veracidad de la misma, es factor fundamental que nos reserva el derecho a otorgar y pagar los premios respectivos. Lo
+                invitamos a diligenciar todos los datos que les solicitamos, y si tiene alguna duda al respecto, por favor comuníquese con nosotros por los canales que tenemos dispuestos para usted (chat en línea, correo electrónico)</p>
+              <label class="col-md-12">Datos de usuario: Los campos con (*) son obligatorios</label>
+            </div>
+            <form>
+              <div class="row">
+                <div class="form-group col-md-3">
+                  <label for="inputFirstName">Primer Nombre:</label>
+                  <input type="text" class="form-control" id="inputFirstName" placeholder="Primer Nombre">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputSecondName">Segundo Nombre:</label>
+                  <input type="text" class="form-control" id="inputSecondName" placeholder="Segundo Nombre">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputLastName">Primer Apellido:</label>
+                  <input type="text" class="form-control" id="inputLastName" placeholder="Primer Apellido">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputSecondLastName">Segundo Apellido:</label>
+                  <input type="text" class="form-control" id="inputSecondLastName" placeholder="Segundo Apellido">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputGender">Sexo:</label>
+                  <select class="form-control" name="singleSelect" id="inputGender">
+               <option selected>Escoja genero</option>
+              <option value="male">Masculino</option>
+              <option value="female">Femenino</option>
+            </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputDocumentType">Tipo Documento:</label>
+                  <select class="form-control" name="singleSelect" id="inputDocumentType">
+               <option selected>Tipo Documento</option>
+              <option value="cc">C.C.</option>
+              <option value="ti">T.I.</option>
+            </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputIdentity">Nº Identificación:</label>
+                  <input type="number" class="form-control" id="inputIdentity" placeholder="Documento Identidad">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputDepartmentExp">* Departamento Expedición:</label>
+                  <input type="text" class="form-control" id="inputDepartmentExp" placeholder="Departamento">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputCityExp">* Ciudad Expedición:</label>
+                  <input type="text" class="form-control" id="inputCityExp" placeholder="Ciudad">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputDateExp">* Fecha Expedición:</label>
+                  <input type="date" class="form-control" id="inputDateExp" placeholder="Fecha">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputFile">Anexe copia Documento de Identidad</label>
+                  <input lang="es" type="file" id="inputFile" class="form-control" placeholder="Hola">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputNationality">Nacionalidad:</label>
+                  <input type="email" class="form-control" id="inputNationality" placeholder="Nacionalidad">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputDepartment">* Departamento Residencia:</label>
+                  <input type="text" class="form-control" id="inputDepartment" placeholder="Departamento">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputCity">* Ciudad Residencia:</label>
+                  <input type="text" class="form-control" id="inputCity" placeholder="Ciudad">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputAddress">Dirección Residencia:</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Dirección">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputZipcode">Código Postal</label>
+                  <input type="text" class="form-control" id="inputZipcode" placeholder="Dirección">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputDepartmentFrom">* Departamento Nacimiento:</label>
+                  <input type="text" class="form-control" id="inputDepartmentFrom" placeholder="Departamento Nacimiento">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputCityFrom">* Ciudad Residencia:</label>
+                  <input type="text" class="form-control" id="inputCityFrom" placeholder="Ciudad">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputBirthDate">* Fecha Nacimiento:</label>
+                  <input type="date" class="form-control" id="inputBirthDate" placeholder="Fecha">
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-3">
+                  <label for="inputEmail">Email:</label>
+                  <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputEmail2">Confirmar Email:</label>
+                  <input type="email" class="form-control" id="inputEmail2" placeholder="Email">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputTel">Teléfono Fijo:</label>
+                  <input type="tel" class="form-control" id="inputTel" placeholder="Teléfono">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputMobile">Teléfono Movil:</label>
+                  <input type="tel" class="form-control" id="inputMobile" placeholder="Celular">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputPassword">Contraseña:</label>
+                  <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputPassword2">Contraseña:</label>
+                  <input type="password" class="form-control" id="inputPassword2" placeholder="Contraseña">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputReference">Ha sido referido por:</label>
+                  <input type="text" class="form-control" id="inputReference" placeholder="Referido por:">
+                </div>
+              </div>
+              <div class="hidden-xs row is-flex">
+                <div class="form-group col-md-3 col-md-offset-3">
+                  <div class="responsive-captcha" re-captcha ng-model="user.captcha"></div>
+                </div>
+                <div class="form-group col-md-3">
+                  <div class="accept">
+                    <label>
+                      <input class="col-md-1" type="checkbox">Soy mayor de 18 años y he leído y aceptado los términos y condiciones generales de wplay.co
+                    </label>
+                    <button type="submit" class="btn btn-default">Enviar Información</button>
+                  </div>
+                </div>
+              </div>
+              <div class="visible-xs-block row">
+                <div class="form-group col-xs-12">
+                  <div class="responsive-captcha" re-captcha ng-model="user.captcha"></div>
+                </div>
+                <div class="form-group col-xs-12">
+                  <label>
+                      <input class="col-md-1" type="checkbox">Soy mayor de 18 años y he leído y aceptado los términos y condiciones generales de wplay.co
+                    </label>
+                </div>
+                <div class="form-group col-xs-12">
+                  <button type="submit" class="btn btn-block btn-wplay">Enviar Información</button>
+                </div>
+              </div>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!--<h1>{{ $ctrl.hello }}</h1>-->
+<div footer></div>

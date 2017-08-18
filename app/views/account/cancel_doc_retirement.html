@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <div header></div>
+</div>
+<style>
+    .red {
+        color: darkred;
+    }
+
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="game-account">
+            <div class="hidden-xs row">
+                <div class="col-md-12 header">
+                    <span>Cuenta de Juego</span>
+                </div>
+            </div>
+            <div class="row body">
+                <div submenu></div>
+                <div class="col-md-12 header">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span>Cancelar documento de retiro</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 detail">
+                    <div class="row">
+                        <div class="col-md-12 warning">
+                            <div class="row">
+                                <div class="col-xs-2 col-sm-1">
+                                    <img class="img-responsive center-block" src="app/img/account/warning.png"></img>
+                                </div>
+                                <div class="col-xs-10 col-sm-11">
+                                    <div class="text-warning">
+                    <span>
+                        <b> Nota Importante:</b> para cancelar el documento de retiro:
+                        <ul>
+                            <li>De doble clic al documento de retiro que desea cancelar</li>
+                            <li>Al cancelar el documento de retiro el saldo sera restablecido al tipo de saldo correspondiente</li>
+                            <li>Esta operación una vez realizada es irreversible</li>
+                        </ul>
+                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 top">
+                            <label>Saldo premios: <span>{{banca.balance | currency:$:0}}</span></label><br>
+                            <label>Créditos de participación:
+                                <span>{{banca.balanceCredit | currency:$:0}}</span></label>
+
+                            <div ui-grid="banca.cgridOptions" ui-grid-pagination class="ag-fresh"
+                                 style="height:250px; color: #ffffff"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div footer></div>

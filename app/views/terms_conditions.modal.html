@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h4 class="modal-title">Términos y condiciones</h4>
+</div>
+<div class="row game-info">
+  <div class="col-md-12 detail">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12">
+            <div ng-bind-html="info.info"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 bottom">
+    <button ng-click="info.accept(true)" class="btn btn-wplay">Acepto</button>
+    <button ng-click="info.accept(false)" class="btn btn-wplay-alt">No Acepto</button>
+    <a class="btn btn-wplay" target="_self" href="documents/terminos_condiciones.pdf" download>Descargar</a>
+  </div>
+</div>

@@ -1,0 +1,180 @@
+<div class="container-fluid">
+    <div header></div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="game-account movement">
+            <div class="hidden-xs row">
+                <div class="col-md-12 header">
+                    <span>Cuenta de Juego</span>
+                </div>
+            </div>
+            <div class="row body">
+                <div submenu></div>
+                <div class="col-md-12 header">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="visible-xs-block">{{movement.currentTitle}}</span>
+                            <span class="hidden-xs">Movimientos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12" style="cursor: pointer">
+                    <div class="row text-center">
+                        <ul class="nav nav-tabs">
+                            <li ng-class="{'active': movement.activeTab == 1 }">
+                                <a ng-click="movement.selectTab(1)">{{movement.items[0]}}
+                                <span class="glyphicon glyphicon-usd"></span></a>
+                            </li>
+                            <li ng-class="{'active': movement.activeTab == 2 }">
+                                <a ng-click="movement.selectTab(2)">{{movement.items[1]}}
+                                <span class="glyphicon glyphicon-hourglass"></span></a>
+                            </li>
+                            <li ng-class="{'active': movement.activeTab == 3 }">
+                                <a ng-click="movement.selectTab(3)">{{movement.items[2]}}
+                                <span class="glyphicon glyphicon-remove-circle"></span></a>
+                            </li>
+                            <li ng-class="{'active': movement.activeTab == 4 }">
+                                <a ng-click="movement.selectTab(4)">{{movement.items[3]}}
+                                <span class="glyphicon glyphicon-retweet"></span></a>
+                            </li>
+                            <li ng-class="{'active': movement.activeTab == 5 }">
+                                <a ng-click="movement.selectTab(5)">{{movement.items[4]}}
+                                <span class="glyphicon glyphicon-edit"></span></a>
+                            </li>
+                            <li ng-class="{'active': movement.activeTab == 6 }">
+                                <a ng-click="movement.selectTab(6)">{{movement.items[5]}}
+                                <span class="glyphicon glyphicon-align-left"></span></a>
+                            </li>
+                            <li ng-class="{'active': movement.activeTab == 7 }">
+                                <a ng-click="movement.selectTab(7)">{{movement.items[6]}}
+                                <span class="glyphicon glyphicon-tag"></span></a>
+                            </li>
+                            <li ng-class="{'active': movement.activeTab == 8 }">
+                                <a ng-click="movement.selectTab(8)">{{movement.items[7]}}
+                                <span class="glyphicon glyphicon-list-alt"></span></a>
+                            </li>
+                            <li ng-class="{'active': movement.activeTab == 9 }">
+                                <a ng-click="movement.selectTab(9)">{{movement.items[8]}}
+                                <span class="glyphicon glyphicon-file"></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div ng-class="{'current': movement.activeTab == 1 }" class="tab-1">
+                    <div class="col-md-12 detail">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div ui-grid="movement.gridOptionsBalance" class="grid-one-row"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--2 Tab-->
+                <div ng-class="{'current': movement.activeTab == 2 }" class="tab-2">
+                    <div class="col-md-12 detail">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div ui-grid="movement.gridOptionsDeposit" ui-grid-pagination class="grid"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--end-->
+                <!--3 Tab-->
+                <div ng-class="{'current': movement.activeTab == 3 }" class="tab-3">
+                    <div class="col-md-12 detail">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div ui-grid="movement.gridOptionsBet" ui-grid-pagination class="grid"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-class="{'current': movement.activeTab == 4 }" class="tab-4">
+                    <div class="col-md-12 detail">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div ui-grid="movement.gridOptionsPendingDocs" ui-grid-pagination
+                                         class="grid"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-class="{'current': movement.activeTab == 5 }" class="tab-5">
+                    <div class="col-md-12 detail">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div ui-grid="movement.gridOptionsPaidDocs" ui-grid-pagination class="grid"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-class="{'current': movement.activeTab == 6 }" class="tab-6">
+                    <div class="col-md-12 detail">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div ui-grid="movement.gridOptionsCancelDocs" ui-grid-pagination class="grid"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-class="{'current': movement.activeTab == 7 }" class="tab-7">
+                    <div class="col-md-12 detail">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div ui-grid="movement.gridOptionsIncome" ui-grid-pagination class="grid"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-class="{'current': movement.activeTab == 8 }" class="tab-8">
+                    <div class="col-md-12 detail">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div ui-grid="movement.gridOptionsOutcome" ui-grid-pagination class="grid"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-class="{'current': movement.activeTab == 9 }" class="tab-9">
+                    <div class="col-md-12 detail">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div ui-grid="movement.gridOptionsBalanceDetail" class="grid-one-row"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--end-->
+            </div>
+        </div>
+    </div>
+</div>
+<div footer></div>

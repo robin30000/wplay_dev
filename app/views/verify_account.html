@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div header></div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="forget-password">
+      <div class="hidden-xs row">
+        <div class="col-md-12 header">
+          <span>Verificar cuenta</span>
+        </div>
+      </div>
+      <div class="row body">
+        <div class="col-md-6 col-md-offset-1 detail">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+                <div ng-class="vm.state == 1 ? 'text-success' : 'text-danger'" class="col-md-12" style="color: silver">
+                  <h4>{{verifyAccount.title}}</h4>
+                  <p>{{verifyAccount.detail}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div footer></div>

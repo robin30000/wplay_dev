@@ -1,0 +1,57 @@
+<div class="container-fluid">
+  <div header></div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="game-account inbox">
+      <div class="hidden-xs row">
+        <div class="col-md-12 header">
+          <span>Cuenta de Juego</span>
+        </div>
+      </div>
+      <div class="row body">
+        <div submenu></div>
+        <div class="col-md-12 header">
+          <div class="row">
+            <div class="col-md-12">
+              <span>BUZÓN DE ENTRADA</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 detail">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-offset-9 col-md-3">
+                  <div class="inner-addon right-addon">
+                    <i class="glyphicon glyphicon-search"></i>
+                    <input type="text" ng-model="inbox.search" class="form-control" placeholder="Buscar" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="list-group">
+                  <a ng-repeat="message in inbox.messages | filter:inbox.search | startFrom:(inbox.currentPage-1)*inbox.entryLimit | limitTo:inbox.entryLimit" ng-click="inbox.open(message)" ng-class="message.leido == 0 ? 'unread': ''" class="list-group-item">
+                    <div class="checkbox">
+                      <label>
+                          <input type="checkbox">
+                      </label>
+                    </div>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="name" style="min-width: 120px; display: inline-block;">{{message.remitente}}</span> <span class="">{{message.asunto}}</span>
+                    <span class="text-muted" style="font-size: 11px;">- {{message.texto | limitTo:25}} ... </span>
+                    <span class="badge">{{message.fecha | filterInboxDate}}</span>
+                  </a>
+                </div>
+                <div class="col-md-12 text-center">
+                  <ul uib-pagination items-per-page="inbox.entryLimit" total-items="inbox.totalItems" ng-model="inbox.currentPage" previous-text="Anterior" next-text="Siguiente" ng-show="inbox.totalItems > 0"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div footer></div>

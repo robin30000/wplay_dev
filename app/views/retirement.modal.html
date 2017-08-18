@@ -1,0 +1,48 @@
+<div class="modal-header">
+    <button aria-hidden="true" ng-click="retirement.close()" class="close" type="button">×</button>
+    <h4 class="modal-title">Documento de retiro</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+
+        <div ng-show="retirement.efecty" id="printReceipt" class="col-md-10 col-md-offset-1 receipt">
+            <io-barcode code="{{retirement.code}}" type="CODE128B" options="retirement.options"></io-barcode>
+            <label class="col-md-12">*{{retirement.code}}*</label>
+            <label>Documento de Retiro</label>
+            <h5>Documento de Retiro Nº: <span>{{retirement.code}}</span></h5>
+            <h5>Medio de Pago: <span>{{retirement.paymentMethod}}</span></h5>
+            <h5>Fecha: <span>{{retirement.date | date:'short'}}</span></h5>
+            <h5>Clave: <span>{{retirement.clave}}</span></h5>
+            <h5>Tipo de saldo: <span>{{retirement.saldoType}}</span></h5>
+            <h5>Valor a retirar: <span>{{retirement.quantityOrig | currency:$:0}}</span></h5>
+            <h5>{{retirement.retencion}} (<span>{{retirement.porcentajeRetencion}}%</span>) : <span>{{retirement.valorRetencion|currency:$:0}}</span></h5>
+            <!--<label>Descuento administrativo: (<span>{{retirement.porcentajeRetencion}}%</span>) = <span>{{retirement.valorRetencion|currency:$:0}}</span></label>-->
+            <label>Valor Neto a Retirar: <span>{{retirement.quantity | currency:$:0}}</span></label>
+            <div class="row">
+                <span class="text-center" style="font-size: 11px">{{retirement.pie_nota}}</span>
+            </div>
+            <io-barcode code="{{retirement.codeClave}}" type="CODE128B"></io-barcode>
+        </div>
+
+        <div ng-show="retirement.reBank" id="printReceipt" class="col-md-10 col-md-offset-1 receipt">
+            <io-barcode code="{{retirement.code}}" type="CODE128B" options="retirement.options"></io-barcode>
+            <label class="col-md-12">*{{retirement.code}}*</label>
+            <label>Documento de Retiro</label>
+            <h5>Documento de Retiro Nº: <span>{{retirement.code}}</span></h5>
+            <h5>Medio de Pago: <span>{{retirement.paymentMethod}}</span></h5>
+            <h5>Fecha: <span>{{retirement.date | date:'short'}}</span></h5>
+            <h5>Tipo de saldo: <span>{{retirement.saldoType}}</span></h5>
+            <h5>Valor a retirar: <span>{{retirement.quantityOrig | currency:$:0}}</span></h5>
+            <h5>{{retirement.retencion}} (<span>{{retirement.porcentajeRetencion}}%</span>) : <span>{{retirement.valorRetencion|currency:$:0}}</span></h5>
+            <label>Valor Neto a Retirar <span>{{retirement.quantity | currency:$:0}}</span></label>
+        </div>
+
+    </div>
+    <br>
+    <div class="row center-block">
+        <div class="col-md-6 col-sm-offset-3">
+            <button class="btn btn-wplay btn-block" ng-click="retirement.printReceipt('printReceipt')">Imprimir
+            </button>
+        </div>
+    </div>
+</div>

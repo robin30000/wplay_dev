@@ -1,0 +1,97 @@
+<div class="modal-header">
+    <button aria-hidden="true" ng-click="pasarela.close()" class="close" type="button">×</button>
+    <h4 class="modal-title">Confirmar Recarga </h4>
+</div>
+<div class="modal-body">
+    <!--<form ng-if="pasarela.pasarela == 'tu_compra'" ng-submit="pasarela.confirm()"
+          action="https://demover3-1.tucompra.net/tc/app/inputs/compra.jsp" method="post">-->
+         <form ng-if="pasarela.pasarela == 'tu_compra'" ng-submit="pasarela.confirm()"
+               action="https://gateway2.tucompra.com.co/tc/app/inputs/compra.jsp" method="post">
+
+        <!--variables obligatorias-->
+
+        <input type="hidden" name="usuario" ng-value="pasarela.cliente">
+        <input type="hidden" name="factura" ng-value="pasarela.factura">
+        <input type="hidden" name="descripcionFactura" ng-value="pasarela.descripcion">
+        <input type="hidden" name="tokenSeguridad" ng-value="pasarela.token_solicitud">
+
+        <!--variables opcionales-->
+
+        <input type="hidden" name="tipoMoneda" ng-value="pasarela.tipoMoneda">
+        <input type="hidden" name="lenguaje" ng-value="pasarela.lenguaje">
+        <input type="hidden" name="recurrencia" ng-value="pasarela.recurrencia">
+        <input type="hidden" name="periodo" ng-value="pasarela.periodo">
+        <input type="hidden" name="cantidadCobros" ng-value="pasarela.cantidadCobros">
+        <input type="hidden" name="metodoPago" ng-value="pasarela.metodoPago">
+        <input type="hidden" name="valor" ng-value="pasarela.valor">
+        <input type="hidden" name="valorBase" ng-value="pasarela.valorBase">
+        <input type="hidden" name="valorIva" ng-value="pasarela.valorIva">
+        <input type="hidden" name="tokenTarjeta" ng-value="pasarela.tokenTarjeta">
+
+        <!--variables obligatorias del usuario-->
+
+        <input type="hidden" name="documentoComprador" ng-value="pasarela.documentoComprador">
+        <input type="hidden" name="tipoDocumento" ng-value="pasarela.tipoDocumento">
+        <input type="hidden" name="nombreComprador" ng-value="pasarela.nombreComprador">
+        <input type="hidden" name="apellidoComprador" ng-value="pasarela.apellidoComprador">
+        <input type="hidden" name="correoComprador" ng-value="pasarela.correoComprador">
+        <input type="hidden" name="telefonoComprador" ng-value="pasarela.telefonoComprador">
+        <input type="hidden" name="celularComprador" ng-value="pasarela.celularComprador">
+        <input type="hidden" name="direccionComprador" ng-value="pasarela.direccionComprador">
+        <input type="hidden" name="ciudadComprador" ng-value="pasarela.ciudadComprador">
+        <input type="hidden" name="paisComprador" ng-value="pasarela.paisComprador">
+
+        <!--campos extras-->
+        <input type="hidden" name="campoExtra1" ng-value="pasarela.campoExtra1">
+        <div class="form-group">
+            <label>Va a recargar un valor de {{pasarela.valor | number}}</label>
+        </div>
+        <div class="form-group btn-deposit">
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-block btn-wplay">Aceptar</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" ng-click="pasarela.close()" class="btn btn-block btn-wplay-alt">Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+   <!-- <form ng-if="pasarela.pasarela == 'payU'" ng-submit="pasarela.confirm()"
+          action="https://gateway.payulatam.com/ppp-web-gateway" method="post">-->
+        <form ng-if="pasarela.pasarela == 'payU'" ng-submit="pasarela.confirm()"
+          action="https://sandbox.gateway.payulatam.com/ppp-web-gateway" method="post">
+        <input name="test" type="hidden" ng-value="0">
+        <input name="merchantId" type="hidden" ng-value="509414">
+        <input name="accountId" type="hidden" ng-value="513736">
+        <input name="description" type="hidden" ng-value="pasarela.descripcion">
+        <input name="referenceCode" type="hidden" ng-value="pasarela.factura">
+        <input name="amount" type="hidden" ng-value="pasarela.valor">
+        <input name="tax" type="hidden" ng-value="pasarela.valorIva">
+        <input name="taxReturnBase" type="hidden" ng-value="pasarela.valorBase">
+        <input name="currency" type="hidden" ng-value="pasarela.tipoMoneda">
+        <input name="signature" type="hidden" ng-value="pasarela.token_solicitud">
+        <input name="buyerFullName" type="hidden" ng-value="pasarela.nombreComprador">
+        <input name="buyerEmail" type="hidden" ng-value="pasarela.correoComprador">
+        <input name="extra1" type="hidden" ng-value="pasarela.campoExtra1">
+        <input name="responseUrl" type="hidden" value="https://promo.wplay.co/app/views/account/responsePayu.php">
+        <input name="confirmationUrl" type="hidden" value="https://promo.wplay.co/app/views/account/confirmPayu.php">
+
+        <div class="form-group">
+            <label>Va a recargar un valor de {{pasarela.valor}}</label>
+        </div>
+        <div class="form-group btn-deposit">
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-block btn-wplay">Aceptar</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" ng-click="pasarela.close()" class="btn btn-block btn-wplay-alt">Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

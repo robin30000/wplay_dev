@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div header></div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="game-info">
+      <div class="hidden-xs row">
+        <div class="col-md-12 header">
+          <span>Consultas</span>
+        </div>
+      </div>
+      <div class="row body">
+        <div submenu-info></div>
+        <div class="col-md-12 header">
+          <div class="row">
+            <div class="col-md-12">
+              <span>Tarjetas</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 detail">
+          <div class="row">
+            <div class="col-md-5 col-lg-4">
+              <div id="printCard" class="row recharge-card">
+                <label class="col-md-8 col-md-offset-2">Name: <span>{{recharge.name}}</span></label>
+                <label class="col-md-8 col-md-offset-2">login:<span>{{recharge.email}}</span></label>
+                <label class="col-md-8 col-md-offset-2">Número documento:<span>{{recharge.code}}</span></label>
+                <io-barcode class="col-md-6 col-md-offset-2 barcode" code="{{recharge.code}}" type="CODE128B" options="recharge.options"></io-barcode>
+              </div>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <button ng-click="recharge.printCard('printCard')" class="btn btn-wplay">Imprimir</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div footer></div>

@@ -1,0 +1,41 @@
+<div class="modal-header">
+    <button aria-hidden="true" ng-click="message.close()" class="close" type="button">×</button>
+    <h4 ng-if="message.state == 1" class="modal-title text-center">¡Muchas gracias por tu inscripción!</h4>
+    <h4 ng-if="message.state == 0" class="modal-title text-center">¡Problemas con su inscripción!</h4>
+</div>
+<div class="modal-body">
+    <div class="row text-center">
+        <!-- <p ng-if="message.state == 1">Gracias por Inscribirte, pronto te enviaremos un email de confirmación a <strong>{{message.email}}</strong>,
+             <br> te invitamos a compartir este promocional en tus redes sociales y podrás ganar
+             premios adicionales</p>-->
+        <p ng-if="message.state == 1">Nos encanta que quieras hacer parte de la comunidad Wplay.co <br>
+            GRACIAS POR INSCRIBIRTE. <br>
+            Validaremos  tu información y te enviaremos un correo
+            a <strong>{{message.email}} </strong> para que  hagas  clic  en "verificación cuenta", de inmediato, de forma gratuita
+            y diaria; recargaremos  tu  cuenta con créditos para  que  juegues y sientas la emoción de ganar. 
+            Completa tus datos y participa por más de 60 millones en premios. </p>
+
+        <p ng-if="message.state == 0">Se presento la siguiente inconsistencia: <strong>{{message.msg}}</strong> No dejes
+            de inscribirte para que puedas reclamar un saldo por <strong>10.000</strong> créditos y participes en el
+            <strong>segundo concurso legal</strong> de apuestas deportivas por internet en Colombia.</p>
+    </div>
+</div>
+<div ng-if="message.state==1" class="modal-footer">
+    <div class="text-center">
+        <span class="center-block">Compártenos en tus redes sociales, también puedes ganar!</span><br>
+        <a href="https://www.facebook.com/sharer.php?u={{message.url}}" target="_blank">
+            <img src="../app/img/landing/facebook.png" alt="Facebook"/>
+        </a>
+        <a href="https://twitter.com/share?url={{message.url}};text=La%20emocion%20de%20ganar&amp;hashtags=apuestas"
+           target="_blank">
+            <img src="../app/img/landing/twitter.png" alt="Twitter"/>
+        </a>
+        <a class="btnwhatsapp" href="whatsapp://send?text=Comparte%20la%20emocion%20de%20ganar%20{{message.url}}"
+           data-action="share/whatsapp/share">
+            <img src="../app/img/landing/whatsapp.png" alt="Whatsapp"/>
+        </a>
+        <a class="btnmail" href="mailto:?subject=Comparte%20la%20emocion%20de%20ganar">
+            <img src="../app/img/landing/mail.png" alt="Mail"/>
+        </a>
+    </div>
+</div>

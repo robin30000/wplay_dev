@@ -1,0 +1,385 @@
+<div class="container-fluid">
+    <div header></div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="game-account autoexclusion">
+            <div class="hidden-xs row">
+                <div class="col-md-12 header">
+                    <span>Cuenta de Juego</span>
+                </div>
+            </div>
+            <div class="row body">
+                <div submenu></div>
+                <div class="col-md-12 header">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="visible-xs-block">{{exclusion.currentTitle}}</span>
+                            <span class="hidden-xs">Auto-Exclusión: Puede modificar los límites de ingresos o apuestas en nuestros sistemas de juego</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row text-center">
+                        <ul class="nav nav-tabs">
+                            <li ng-class="{'active': exclusion.activeTab == 1 }"><a ng-click="exclusion.selectTab(1)">{{exclusion.items[0]}}
+                                <span class="glyphicon glyphicon-usd"></span></a></li>
+                            <li ng-class="{'active': exclusion.activeTab == 2 }"><a ng-click="exclusion.selectTab(2)">{{exclusion.items[1]}}
+                                <span class="glyphicon glyphicon-credit-card"></span></a></li>
+                            <li ng-class="{'active': exclusion.activeTab == 3 }"><a ng-click="exclusion.selectTab(3)">{{exclusion.items[2]}}
+                                <span class="glyphicon glyphicon-hourglass"></span></a></li>
+                            <li ng-class="{'active': exclusion.activeTab == 4 }"><a ng-click="exclusion.selectTab(4)">{{exclusion.items[3]}}
+                                <span class="glyphicon glyphicon-remove-circle"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div ng-class="{'current': exclusion.activeTab == 1 }" class="tab-1">
+                    <div class="col-md-12 detail">
+                        <div class="row">
+                            <div ng-show="!exclusion.hasBetLimit" class="col-md-11 warning">
+                                <div class="row">
+                                    <div class="col-xs-2 col-sm-1">
+                                        <img class="img-responsive center-block"
+                                             src="app/img/account/warning.png"></img>
+                                    </div>
+                                    <div class="col-xs-10 col-sm-11">
+                                        <div class="text-warning">
+                                            <span>Aún no se han establecido límite de apuesta</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-show="exclusion.hasBetLimit" class="col-md-11 warning">
+                                <div class="row">
+                                    <div class="col-xs-10 col-sm-11 col-sm-offset-1 col-xs-offset-2">
+                                        <div class="text-success">
+                                            <h4>Límites de apuesta establecido</h4>
+                                            <span>Si desea revertir los cambios debe de esperar hasta 30 días para volver a modificar sus limites de lo contrario comuníquese con nuestros operadores.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div growl reference="1" inline="true" class="row"></div>
+                                <div class="row">
+                                    <form name="betLimitForm" class="form-horizontal"
+                                          ng-submit="exclusion.savebetLimit()">
+                                        <div class="form-group">
+                                            <label for="daybetLimit" class="col-sm-5 control-label text-right">Límite de
+                                                apuestas diario (24 hrs):
+                                                <img src="app/img/common/img-money.png"/></label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control" id="daybetLimit"
+                                                        ng-model="exclusion.daybetLimit"
+                                                        ng-options="betLimit.valor as betLimit.valor|number for betLimit in exclusion.rangeDaybetLimit"
+                                                        ng-disabled="exclusion.hasBetLimit" required>
+                                                    <option value="">Seleccionar Valor</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="weekbetLimit" class="col-sm-5 control-label text-right">Límite
+                                                de apuestas semanal (7 días):
+                                                <img src="app/img/common/img-money.png"/></label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control" id="weekbetLimit"
+                                                        ng-model="exclusion.weekbetLimit"
+                                                        ng-options="betLimit.valor as betLimit.valor|number for betLimit in exclusion.rangeWeekbetLimit"
+                                                        ng-disabled="exclusion.hasBetLimit" required>
+                                                    <option value="">Seleccionar Valor</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="monthbetLimit" class="col-sm-5 control-label text-right">Límite
+                                                apuesta mensual (30 días):
+                                                <img src="app/img/common/img-money.png"/></label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control" id="monthbetLimit"
+                                                        ng-model="exclusion.monthbetLimit"
+                                                        ng-options="betLimit.valor as betLimit.valor|number for betLimit in exclusion.rangeMonthbetLimit"
+                                                        ng-disabled="exclusion.hasBetLimit" required>
+                                                    <option value="">Seleccionar Valor</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div ng-show="exclusion.hasBetLimit" class="form-group">
+                                            <label for="inputbetLimitDate" class="col-sm-5 control-label text-right">Fecha
+                                                vencimiento auto-exclusión apuestas:
+                                                <img src="app/img/common/img-calendar.png"/></label>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control"
+                                                       ng-model="exclusion.betLimitDate" id="inputbetLimitDate"
+                                                       ng-disabled="exclusion.hasBetLimit">
+                                            </div>
+                                        </div>
+                                        <div ng-if="!exclusion.hasBetLimit" class="form-group">
+                                            <label for="inputbetLimitPassword"
+                                                   class="col-sm-5 control-label text-right">Contraseña:
+                                                <img src="app/img/common/img-password.png"/></label>
+                                            <div class="col-sm-7">
+                                                <input type="password" class="form-control"
+                                                       ng-model="exclusion.betLimitPassword" id="inputbetLimitPassword"
+                                                       placeholder="Contraseña" required>
+                                            </div>
+                                        </div>
+                                        <div ng-if="!exclusion.hasBetLimit" class="col-sm-7 col-sm-offset-5">
+                                            <button type="submit" class="btn btn-wplay"
+                                                    ng-disabled="!betLimitForm.$valid">Guardar
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--2 Tab-->
+                <div ng-class="{'current': exclusion.activeTab == 2 }" class="tab-2">
+                    <div class="col-md-12 detail">
+                        <div class="row">
+                            <div ng-show="!exclusion.hasTimeLimit" class="col-md-11 warning">
+                                <div class="row">
+                                    <div class="col-xs-2 col-sm-1">
+                                        <img class="img-responsive center-block"
+                                             src="app/img/account/warning.png"></img>
+                                    </div>
+                                    <div class="col-xs-10 col-sm-11">
+                                        <div class="text-warning">
+                                            <span>Aún no se han establecido límites de dias.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div growl reference="1" inline="true" class="row"></div>
+                                <div class="row">
+                                    <div ng-show="exclusion.hasTimeLimit" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="dayHasTimeLimit" class="col-sm-5 control-label text-right">dias
+                                                los cuales no puedo hacer apuestas
+                                                <img src="app/img/common/img-time.png"/>
+                                            </label>
+                                            <div class="col-sm-2">
+                                                <input type="text" id="dayHasTimeLimit"
+                                                       ng-model="exclusion.dayHasTimeLimit" class="form-control"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputtimeLimit" class="col-sm-5 control-label text-right">Fecha
+                                                que vence la auto-exclusion
+                                                <img src="app/img/common/img-time.png"/>
+                                            </label>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control" ng-model="exclusion.timeLimit"
+                                                       id="inputtimeLimit" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <form name="timeLimitForm" ng-submit="exclusion.savetimeLimit()"
+                                          ng-if="!exclusion.hasTimeLimit" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="inputLimitBet" class="col-sm-5 control-label text-right">Dias
+                                                que no deseo ingresar a partir de hoy
+                                                <img src="app/img/common/img-time.png"/>
+                                            </label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control" id="inputLimitBet"
+                                                        ng-model="exclusion.timeLimit"
+                                                        ng-options="timeLimit.valor as timeLimit.valor|number for timeLimit in exclusion.rangetimeLimit"
+                                                        required>
+                                                    <option value="">Días de no juego</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputtimeLimitPassword"
+                                                   class="col-sm-5 control-label text-right">Contraseña:
+                                                <img src="app/img/common/img-password.png"/></label>
+                                            <div class="col-sm-7">
+                                                <input type="password" class="form-control" id="inputtimeLimitPassword"
+                                                       ng-model="exclusion.timeLimitPassword" placeholder="Contraseña"
+                                                       required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-7 col-sm-offset-5">
+                                            <button type="submit" class="btn btn-wplay"
+                                                    ng-disabled="!timeLimitForm.$valid">Guardar
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--tab 3-->
+                <div ng-class="{'current': exclusion.activeTab == 3 }" class="tab-3">
+                    <div class="col-md-12 detail">
+                        <div class="row">
+                            <div ng-show="!exclusion.hasBetLimitDeposit" class="col-md-11 warning">
+                                <div class="row">
+                                    <div class="col-xs-2 col-sm-1">
+                                        <img class="img-responsive center-block"
+                                             src="app/img/account/warning.png"></img>
+                                    </div>
+                                    <div class="col-xs-10 col-sm-11">
+                                        <div class="text-warning">
+                                            <span>Aún no se han establecido límites de depósitos.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-show="exclusion.hasBetLimitDeposit" class="col-md-11 warning">
+                                <div class="row">
+                                    <div class="col-xs-10 col-sm-11 col-sm-offset-1 col-xs-offset-2">
+                                        <div class="text-success">
+                                            <h4>Límite de depósito establecido</h4>
+                                            <span>Los limites de deposito una vez establecidos estos pueden ser modificados en cualquier momento siempre y cuando el limites a cambiar no sea de mayor valor, si desea cambiar su limite de deposito a un mayor valor debe enviar una solicitud simulando sus limites en el siguiente link <b><a
+                                                    href="javascript:void(0)" ng-click="exclusion.aumentLimit()">Deseo aumentar mis limites de deposito</a> </b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div growl reference="1" inline="true" class="row"></div>
+                                <div class="row">
+                                    <form name="betLimitDepositForm" class="form-horizontal"
+                                          ng-submit="exclusion.savebetLimitDeposit()">
+                                        <div class="form-group">
+                                            <label for="daybetLimit" class="col-sm-5 control-label text-right">Límite
+                                                deposito diario (24 hrs):
+                                                <img src="app/img/common/img-money.png"/></label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control" id="daybetLimitDeposit"
+                                                        ng-model="exclusion.dayLimitDeposit"
+                                                        ng-options="betLimit.valor as betLimit.valor|number for betLimit in exclusion.rangeDaybetLimitDeposit"
+                                                        required>
+                                                    <option value="">Seleccionar Valor</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="weekbetLimit" class="col-sm-5 control-label text-right">Límite
+                                                deposito semanal (7 días):
+                                                <img src="app/img/common/img-money.png"/></label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control" id="weekLimitDeposit"
+                                                        ng-model="exclusion.weekLimitDeposit"
+                                                        ng-options="betLimit.valor as betLimit.valor|number for betLimit in exclusion.rangeWeekbetLimitDeposit"
+                                                        required>
+                                                    <option value="">Seleccionar Valor</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="monthbetLimit" class="col-sm-5 control-label text-right">Límite
+                                                deposito mensual (30 días):
+                                                <img src="app/img/common/img-money.png"/></label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control" id="monthLimitDeposit"
+                                                        ng-model="exclusion.monthLimitDeposit"
+                                                        ng-options="betLimit.valor as betLimit.valor|number for betLimit in exclusion.rangeMonthbetLimitDeposit"
+                                                        required>
+                                                    <option value="">Seleccionar Valor</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputbetLimitPassword"
+                                                   class="col-sm-5 control-label text-right">Contraseña:
+                                                <img src="app/img/common/img-password.png"/></label>
+                                            <div class="col-sm-7">
+                                                <input type="password" class="form-control"
+                                                       ng-model="exclusion.betLimitDepositPassword"
+                                                       id="inputLimitDepositPassword" placeholder="Contraseña" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-7 col-sm-offset-5">
+                                            <button type="submit" class="btn btn-wplay"
+                                                    ng-disabled="!betLimitDepositForm.$valid">Actualizar Limites
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end-->
+                <!--3 Tab-->
+                <div ng-class="{'current': exclusion.activeTab == 4 }" class="tab-4">
+                    <div class="col-md-12 detail">
+                        <div class="row">
+                            <div class="col-md-11 warning">
+                                <div class="row">
+                                    <div class="col-xs-2 col-sm-1">
+                                        <img class="img-responsive center-block"
+                                             src="app/img/account/warning.png"></img>
+                                    </div>
+                                    <div class="col-xs-10 col-sm-11">
+                                        <div class="text-warning">
+                                            <p>Cancelar cuenta: Este proceso es irrevocable si decide continuar deberá
+                                                cumplir con las siguientes condiciones
+                                            <ul>
+                                                <li>No contar con saldo premios</li>
+                                                <li>No contar con saldo de créditos</li>
+                                                <li>De contar con algún tipo de saldo debe acercarse a una de nuestras
+                                                    oficinas para retirar su correspondiente en saldo
+                                                </li>
+                                            </ul>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div growl reference="1" inline="true" class="row"></div>
+                                <div class="row">
+                                    <form name="cancelForm" class="form-horizontal"
+                                          ng-submit="exclusion.cancelAccount()">
+                                        <div class="form-group">
+                                            <div class="checkbox col-sm-offset-1">
+                                                <label>
+                                                    <input type="checkbox" ng-model="exclusion.cancel.answer" required>
+                                                    Deseo cancelar mi cuenta de juego en WPlay.co
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="checkbox col-sm-offset-1">
+                                                <label>
+                                                    <input type="checkbox" ng-model="exclusion.cancel.confirm" required>
+                                                    Confirmo que deseo cancelar mi cuenta de juego en WPlay
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword" class="col-sm-3 col-sm-offset-1">Contraseña:
+                                                <img src="app/img/common/img-password.png"/></label>
+                                            <div class="col-sm-8">
+                                                <input type="password" class="form-control"
+                                                       ng-model="exclusion.cancel.password" id="inputPassword"
+                                                       placeholder="Contraseña" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-sm-offset-1">
+                                            <button type="submit" class="btn btn-danger"
+                                                    ng-disabled="!cancelForm.$valid">Cancelar Cuenta
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--end-->
+            </div>
+        </div>
+    </div>
+</div>
+<div footer></div>

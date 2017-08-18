@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <div header></div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="register">
+            <div class="row">
+                <div class="col-md-12 header">
+                    <span>Actualización de datos</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 body">
+                    <div class="detail">
+                        <div class="row">
+                            <span class="col-md-12 title">No hemos podido verificar tu fecha de nacimiento</span>
+                            <p class="col-md-12">Por favor actualiza este campo</p>
+                        </div>
+                        <div class="row">
+                            <div growl reference="1" inline="true" class="col-md-12"></div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <form name="stepTwoForm" ng-submit="date.submit()">
+                                            <div class="row">
+                                                <div class="form-group col-md-3"
+                                                     ng-class="( stepTwoForm.birthDate.$dirty ? (stepTwoForm.birthDate.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                    <label for="inputBirthDate">* Fecha Nacimiento:</label>
+                                                    <p class="input-group">
+                                                        <input type="text" name="birthDate" class="form-control"
+                                                               uib-datepicker-popup="{{update.format}}"
+                                                               ng-model="date.stepTwo.birthDate"
+                                                               is-open="date.birthDate.opened"
+                                                               datepicker-options="date.dateOptions"
+                                                               ng-required="true" close-text="Close"
+                                                               id="inputBirthDate"/>
+                                                        <span class="input-group-btn">
+                                                                <button type="button" class="btn btn-default"
+                                                                        ng-click="date.open(date.birthDate)"><i
+                                                                        class="glyphicon glyphicon-calendar"></i></button>
+                                                              </span>
+                                                    </p>
+                                                    <error-messages name="stepTwoForm.birthDate"
+                                                                    class="error-date"></error-messages>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-12 text-center">
+                                                    <button type="submit" class="btn btn-wplay"
+                                                            ng-disabled="!stepTwoForm.$valid">
+                                                        Actualizar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<h1>{{ $ctrl.hello }}</h1>-->
+<div footer></div>

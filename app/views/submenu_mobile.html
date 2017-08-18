@@ -1,0 +1,80 @@
+<div class="container-fluid">
+    <div header></div>
+</div>
+<div class="container-fluid mobile-submenu">
+    <div class="row main-buttons">
+        <div ng-class="submenu.active == 1 ? 'active': ''" class="col-xs-6 btn btn-accountgame" ng-click="submenu.activeMenu(1)">
+            Cuenta juego
+        </div>
+        <div ng-class="submenu.active == 2 ? 'active': ''" class="col-xs-6 btn btn-infogame" ng-click="submenu.activeMenu(2)">
+            Consultas
+        </div>
+    </div>
+    <div class="row">
+        <ul ng-class="submenu.active == 1 ? 'active': ''" class="submenu-account">
+            <li class="col-xs-6 text-center">
+                <a class="center-block midataicon" href="cuenta-juego/mis-datos">
+                    <img class="center-block img-responsive" src="app/img/icon-mydata.png" alt="">
+                </a>
+                <span>Mis datos</span>
+            </li>
+            <li class="col-xs-6 text-center">
+                <a class="center-block michangepassword" href="cuenta-juego/cambiar-contrasena">
+                    <img class="center-block img-responsive" src="app/img/icon-changepassword.png" alt="">
+                </a>
+                <span>Cambiar contraseña</span>
+            </li>
+            <li class="col-xs-6 text-center">
+                <a class="center-block mibanca" href="cuenta-juego/banca/registrar/1">
+                    <img class="center-block img-responsive" src="app/img/icon-banca.png" alt="">
+                </a>
+                <span>Banca</span>
+            </li>
+            <li class="col-xs-6 text-center">
+                <a class="center-block miautoexclusion" href="cuenta-juego/autoexclusion/1">
+                    <img class="center-block img-responsive" src="app/img/icon-autoexclusion.png" alt="">
+                </a>
+                <span>Autoexclusión</span>
+            </li>
+            <li class="col-xs-6 text-center">
+                <a class="center-block mimovimientos" href="cuenta-juego/movimientos">
+                    <img class="center-block img-responsive" src="app/img/icon-movimientos.png" alt="">
+                </a>
+                <span>Movimientos</span>
+            </li>
+            <li class="col-xs-6 text-center">
+                <a class="center-block mimensajes" href="cuenta-juego/mensajeria">
+                    <img class="center-block img-responsive" src="app/img/icon-mensajes.png" alt="">
+                </a>
+                <span>Mis mensajes</span>
+            </li>
+        </ul>
+        <ul ng-class="submenu.active == 2 ? 'active': ''" class="submenu-info">
+            <li class="col-xs-6 text-center">
+                <a class="center-block" href="info/consulta-apuestas">
+                    <img class="center-block img-responsive" src="app/img/icon-gettickets.png" alt="">
+                </a>
+                <span>Consulta de apuestas</span>
+            </li>
+            <li class="col-xs-6 text-center">
+                <a class="center-block" href="info/tarjetas-recargas">
+                    <img class="center-block img-responsive" src="app/img/icon-cardrecharge.png" alt="">
+                </a>
+                <span>Tarjetas para recargas</span>
+            </li>
+            <li class="col-xs-6 text-center">
+                <a class="center-block" href="info/terminos-condiciones">
+                    <img class="center-block img-responsive" src="app/img/icon-termconditions.png" alt="">
+                </a>
+                <span>Términos y condiciones</span>
+            </li>
+            <li class="col-xs-6 text-center">
+                <a class="center-block" href="info/preguntas-frecuentes">
+                    <img class="center-block img-responsive" src="app/img/icon-frequentquestions.png" alt="">
+                </a>
+                <span>Preguntas frecuentes</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div footer></div>

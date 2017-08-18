@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <button aria-hidden="true" ng-click="message.close()" class="close" type="button">×</button>
+    <h4 ng-if="message.state == 1" class="modal-title text-center">¡MUCHAS GRACIAS POR TU INSCRIPCIÓN!</h4>
+    <h4 ng-if="message.state == 0" class="modal-title text-center">¡PROBLEMAS CON SU INSCRIPCIÓN!</h4>
+</div>
+<div class="modal-body">
+    <div class="row text-center">
+        <p ng-if="message.state == 1">Hemos Enviado Un Correo A <strong>{{message.email}}</strong> Para Que Puedas Reclamar Un Crédito Por <strong>500.000</strong> Pesos Y Participes En El <strong>Primer Concurso Legal</strong> De Apuestas Deportivas Por Internet En Colombia</p>
+        <p ng-if="message.state == 0">Se presento el siguiente error: <strong>{{message.msg}}</strong> No dejes de inscribirte para Que Puedas Reclamar Un Crédito Por <strong>500.000</strong> Pesos Y Participes En El <strong>Primer Concurso Legal</strong> De Apuestas Deportivas Por Internet En Colombia</p>
+    </div>
+</div>
+<div ng-if="message.state==1" class="modal-footer">
+    <div class="text-center">
+        <span class="center-block">COMPARTE EN TUS REDES</span>
+        <a href="https://www.facebook.com/sharer.php?u={{message.url}}" target="_blank">
+            <img src="../app/img/landing/facebook.png" alt="Facebook" />
+        </a>
+        <a href="https://twitter.com/share?url={{message.url}};text=La%20emocion%20de%20ganar&amp;hashtags=apuestas" target="_blank">
+            <img src="../app/img/landing/twitter.png" alt="Twitter" />
+        </a>
+        <a class="btnwhatsapp" href="whatsapp://send?text=Comparte%20la%20emocion%20de%20ganar%20{{message.url}}" data-action="share/whatsapp/share">
+            <img src="../app/img/landing/whatsapp.png" alt="Whatsapp" />
+        </a>
+        <a class="btnmail" href="mailto:?subject=Comparte%20la%20emocion%20de%20ganar">
+            <img src="../app/img/landing/mail.png" alt="Mail" />
+        </a>
+    </div>
+</div>

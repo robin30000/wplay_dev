@@ -1,0 +1,90 @@
+<div class="submenu">
+    <ul class="hidden-xs">
+        <li ng-class="menu.getClass('/cuenta-juego/mis-datos')">
+            <a href="/cuenta-juego/mis-datos">Mis datos</a>
+        </li>
+        <li ng-class="menu.getClass('/cuenta-juego/cambiar-contrasena')">
+            <a href="/cuenta-juego/cambiar-contrasena">Cambiar contraseña</a>
+        </li>
+        <li ng-class="menu.getClass('/cuenta-juego/banca/registrar/1') || menu.getClass('/cuenta-juego/banca/registrar/2') || menu.getClass('/cuenta-juego/banca/registrar/3') || menu.getClass('/cuenta-juego/banca/deposito') || menu.getClass('/cuenta-juego/banca/retiro')">
+            <a href="#">Banca</a>
+            <ul>
+                <li ng-class="menu.getClass('/cuenta-juego/banca/registrar/1')">
+                    <a href="/cuenta-juego/banca/registrar/1">Cuentas bancarias</a>
+                </li>
+                <li ng-class="menu.getClass('/cuenta-juego/banca/deposito')">
+                    <a href="/cuenta-juego/banca/deposito">Realizar deposito</a>
+                </li>
+                <li ng-class="menu.getClass('/cuenta-juego/banca/retiro')">
+                    <a href="/cuenta-juego/banca/retiro">Generar doc. retiro</a>
+                </li>
+                <li ng-class="menu.getClass('/cuenta-juego/banca/cancela-doc-retiro')">
+                    <a href="/cuenta-juego/banca/cancela-doc-retiro">Cancelar
+                        doc. retiro</a>
+                </li>
+            </ul>
+        </li>
+        <li ng-class="menu.getClass('/cuenta-juego/autoexclusion')">
+            <a href="/cuenta-juego/autoexclusion/1">Autoexclusión</a>
+        </li>
+        <li ng-class="menu.getClass('/cuenta-juego/movimientos/1') || menu.getClass('/cuenta-juego/movimientos/2') || menu.getClass('/cuenta-juego/movimientos/3') || menu.getClass('/cuenta-juego/movimientos/4') || menu.getClass('/cuenta-juego/movimientos/5') || menu.getClass('/cuenta-juego/movimientos/6') || menu.getClass('/cuenta-juego/movimientos/7') || menu.getClass('/cuenta-juego/movimientos/8')">
+            <a href="/cuenta-juego/movimientos/1">Movimientos</a>
+        </li>
+        <li ng-class="menu.getClass('/cuenta-juego/mensajeria')">
+            <a href="/cuenta-juego/mensajeria">Mensajería</a>
+        </li>
+    </ul>
+    <div class="visible-xs-block mobile">
+        <div class="mobile-submenu">
+            <div class="row main-buttons">
+                <div class="col-xs-6 btn active">
+                    <a href="submenu/1">
+                        Cuenta juego
+                    </a>
+                </div>
+                <div class="col-xs-6 btn">
+                    <a href="submenu/2">
+                        Consultas
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div ng-class="menu.active ? 'cs-active':''" class="cs-select" tabindex="0">
+            <a ng-click="menu.showMenu()" class="cs-placeholder">{{menu.currentItem}}</a>
+            <div class="cs-options">
+                <ul>
+                    <li ng-class="menu.getClassMob('/cuenta-juego/mis-datos','MIS DATOS')"><a
+                            href="cuenta-juego/mis-datos">Completar datos</a></li>
+                    <li ng-class="menu.getClassMob('/cuenta-juego/cambiar-contrasena','CAMBIAR CONTRASEÑA')"><a
+                            href="cuenta-juego/cambiar-contrasena">Cambiar contraseña</a></li>
+                    <li ng-class="menu.getClassMob('/cuenta-juego/banca','BANCA')" class="cs-optgroup"><a
+                            ng-class="menu.activeSubmenu == 1 ? 'cs-show' : ''" ng-click="menu.showSubmenu(1)">Banca</a>
+                        <ul ng-class="menu.activeSubmenu == 1 ? 'cs-show-items' : ''">
+                            <li ng-class="menu.getClassMob('/cuenta-juego/banca/1','BANCA')"><a
+                                    href="cuenta-juego/banca/registrar/1">Registrar cuenta</a></li>
+                            <li ng-class="menu.getClassMob('/cuenta-juego/banca/2','BANCA')"><a
+                                    href="cuenta-juego/banca/deposito">Realizar deposito</a></li>
+                            <li ng-class="menu.getClassMob('/cuenta-juego/banca/3','BANCA')"><a
+                                    href="cuenta-juego/banca/retiro">Documento de retiro</a></li>
+                        </ul>
+                    </li>
+                    <li ng-class="menu.getClassMob('/cuenta-juego/autoexclusion','AUTOEXCLUSIÓN')" class="cs-optgroup">
+                        <a ng-class="menu.activeSubmenu == 2 ? 'cs-show' : ''" ng-click="menu.showSubmenu(2)">Autoexclusión</a>
+                        <ul ng-class="menu.activeSubmenu == 2 ? 'cs-show-items' : ''">
+                            <li ng-class="menu.getClassMob('/cuenta-juego/autoexclusion/1','AUTOEXCLUSIÓN')"><a
+                                    href="cuenta-juego/autoexclusion/1">Límite de apuestas</a></li>
+                            <li ng-class="menu.getClassMob('/cuenta_juego/autoexclusion/2','AUTOEXCLUSIÓN')"><a
+                                    href="cuenta-juego/autoexclusion/2">Límite tiempo de juego</a></li>
+                            <li ng-class="menu.getClassMob('/cuenta_juego/autoexclusion/3','AUTOEXCLUSIÓN')"><a
+                                    href="cuenta-juego/autoexclusion/3">Cancelar cuenta</a></li>
+                        </ul>
+                    </li>
+                    <li ng-class="menu.getClassMob('/cuenta-juego/movimientos','MOVIMIENTOS')"><a
+                            href="cuenta-juego/movimientos/1">Movimientos</a></li>
+                    <li ng-class="menu.getClassMob('/cuenta-juego/mensajeria','MENSAJERIA')"><a
+                            href="cuenta-juego/mensajeria">Mensajería</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

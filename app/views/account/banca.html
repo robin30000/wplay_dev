@@ -1,0 +1,230 @@
+<div class="container-fluid">
+    <div header></div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="game-account">
+            <div class="hidden-xs row">
+                <div class="col-md-12 header">
+                    <span>Cuenta de juego</span>
+                </div>
+            </div>
+            <div class="row body">
+                <div submenu></div>
+
+                <div class="col-md-12">
+                    <div class="row banca text-center">
+                        <div class="col-xs-4 col-xs-offset-0 col-md-3 col-md-offset-1">
+                            <span ng-click="banca.selectTab(1)" ng-class="{'current': banca.activeTab == 1 }"
+                                  class="glyphicon glyphicon-user"></span>
+                            <div class="line-right"></div>
+                        </div>
+                        <div class="col-xs-4 col-md-4">
+                            <div class="line-left"></div>
+                            <span ng-click="banca.selectTab(2)" ng-class="{'current': banca.activeTab == 2 }"
+                                  class="glyphicon glyphicon-credit-card"></span>
+                            <div class="line-right"></div>
+                        </div>
+                        <div class="col-xs-4 col-md-3">
+                            <div class="line-left"></div>
+                            <span ng-click="banca.selectTab(3)" ng-class="{'current': banca.activeTab == 3 }"
+                                  class="glyphicon glyphicon-ok"></span>
+                        </div>
+                    </div>
+                </div>
+                <div ng-class="{'current': banca.activeTab == 1 }" class="tab-1">
+                    <div class="col-md-12 header">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span>Datos del titular de la cuenta</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 detail">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="row">
+                                    <form ng-submit="banca.nextstep()">
+                                        <div class="form-group col-md-4">
+                                            <label for="inputFirstName">Primer nombre:</label>
+                                            <input type="text" class="form-control" id="inputFirstName"
+                                                   ng-model="banca.firstName" placeholder="Primer Nombre" readonly>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="inputSecondName">Segundo nombre:</label>
+                                            <input type="text" class="form-control" id="inputSecondName"
+                                                   ng-model="banca.secondName" placeholder="Segundo Nombre" readonly>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="inputFirstLastname">Primer apellido:</label>
+                                            <input type="text" class="form-control" id="inputFirstLastname"
+                                                   ng-model="banca.lastName" placeholder="Primer Apellido" readonly>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="inputSecondLastname">Segundo apellido:</label>
+                                            <input type="text" class="form-control" id="inputSecondLastname"
+                                                   ng-model="banca.secondlastName" placeholder="Segundo Apellido"
+                                                   readonly>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="inputIdentity">Nº Documento identidad:</label>
+                                            <input type="number" class="form-control" id="inputIdentity"
+                                                   ng-model="banca.identity" placeholder="Documento Identidad" readonly>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="inputAddress">Dirección:</label>
+                                            <input type="text" class="form-control" id="inputAddress"
+                                                   ng-model="banca.address" placeholder="Dirección" readonly>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="inputEmail">Email:</label>
+                                            <input type="email" class="form-control" id="inputEmail"
+                                                   ng-model="banca.email" placeholder="Email" readonly>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="inputTel">Teléfono fijo:</label>
+                                            <input type="tel" class="form-control" id="inputTel" ng-model="banca.phone"
+                                                   placeholder="Teléfono" readonly>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="inputMobile">Teléfono movil:</label>
+                                            <input type="tel" class="form-control" id="inputMobile"
+                                                   ng-model="banca.mobile" placeholder="Celular" readonly>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <button type="submit" class="btn btn-wplay">Continuar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--2 Tab-->
+                <div ng-class="{'current': banca.activeTab == 2 }" class="tab-2">
+                    <div class="col-md-12 header">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span>Datos de la cuenta</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 detail">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div growl reference="1" inline="true" class="col-md-12"></div>
+                                    <div class="col-md-12">
+                                        <form name="accountForm" ng-submit="banca.save()">
+                                            <div class="row">
+                                                <div class="form-group col-md-6"
+                                                     ng-class="accountForm.bank.$dirty ? accountForm.bank.$valid ? 'has-success' : 'has-error': ''">
+                                                    <label for="bankSelect">Seleccionar banco:</label>
+                                                    <select class="form-control" id="bankSelect" name="bank"
+                                                            ng-model="banca.bank"
+                                                            ng-options="bank.banco_id as bank.descripcion for bank in banca.banks"
+                                                            required>
+                                                        <option value="">Escoja opción</option>
+                                                    </select>
+                                                    <error-messages name="accountForm.bank"
+                                                                    class="error-select"></error-messages>
+                                                </div>
+                                                <div class="form-group col-md-6"
+                                                     ng-class="accountForm.confirmbank.$dirty ? accountForm.confirmbank.$valid ? 'has-success' : 'has-error': ''">
+                                                    <label for="confirmBankSelect">Confirmar banco:</label>
+                                                    <select class="form-control" id="confirmBankSelect"
+                                                            name="confirmbank" ng-model="banca.confirmbank"
+                                                            ng-options="bank.banco_id as bank.descripcion for bank in banca.banks"
+                                                            equal="banca.bank" required>
+                                                        <option value="">Escoja opción</option>
+                                                    </select>
+                                                    <error-messages name="accountForm.confirmbank"
+                                                                    class="error-select"></error-messages>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-6"
+                                                     ng-class="accountForm.bankAccount.$dirty ? accountForm.bankAccount.$valid ? 'has-success' : 'has-error': ''">
+                                                    <label for="bankAccount">Nº cuenta bancaria:</label>
+                                                    <input type="text" class="form-control" name="bankAccount"
+                                                           id="bankAccount" ng-model="banca.bankAccount"
+                                                           ng-minlength="7" ng-maxlength="20"
+                                                           placeholder="Nº cuenta Bancaria" required numbers-only>
+                                                    <error-messages name="accountForm.bankAccount"
+                                                                    class="error-select"></error-messages>
+                                                </div>
+                                                <div class="form-group col-md-6"
+                                                     ng-class="accountForm.confirmBankAccount.$dirty ? accountForm.confirmBankAccount.$valid ? 'has-success' : 'has-error': ''">
+                                                    <label for="confirmBankAccount">Confirmar Nº cuenta
+                                                        bancaria:</label>
+                                                    <input type="text" class="form-control" id="confirmBankAccount"
+                                                           name="confirmBankAccount" ng-model="banca.bankConfirm "
+                                                           ng-minlength="7" ng-maxlength="20"
+                                                           placeholder="Confirmar Nº cuenta Bancaria"
+                                                           equal="banca.bankAccount" numbers-only required
+                                                           ng-paste="$event.preventDefault()">
+                                                    <error-messages name="accountForm.confirmBankAccount"
+                                                                    class="error-select"></error-messages>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-6 ">
+                                                    <label for="bankAccountType">Tipo de cuenta:</label>
+                                                    <select class="form-control" id="bankAccountType"
+                                                            ng-model="banca.accountType"
+                                                            ng-options="account.value as account.option for account in banca.accountTypes"
+                                                            required>
+                                                        <option value="">Escoja opción</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6 ">
+                                                    <label for="bankAccountClient">Tipo de cliente:</label>
+                                                    <select class="form-control" id="bankAccountClient"
+                                                            ng-model="banca.clientType"
+                                                            ng-options="client.value as client.option for client in banca.clientTypes"
+                                                            required>
+                                                        <option value="">Escoja opción</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-12 ">
+                                                    <button class="btn btn-wplay-alt" ng-click="banca.backstep()">
+                                                        Anterior
+                                                    </button>
+                                                    <button type="submit" class="btn btn-wplay"
+                                                            ng-disabled="!accountForm.$valid">Guardar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end-->
+                <!--2 Tab-->
+                <div ng-class="{ 'current': banca.activeTab==3 } " class="tab-3 ">
+                    <div class="col-md-12 header ">
+                        <div class="row ">
+                            <div class="col-md-12 ">
+                                <span>Cuentas Registradas</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 detail ">
+                        <div class="row ">
+                            <div class="col-md-12 ">
+                                <div ui-grid="banca.gridOptions" class="agrid-one-row" style="height: 100px" ui-grid-selection></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end-->
+            </div>
+        </div>
+    </div>
+</div>
+<div footer></div>

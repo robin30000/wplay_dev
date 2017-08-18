@@ -1,0 +1,142 @@
+<div class="container-fluid">
+    <div header></div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="contact">
+            <div class="hidden-xs row">
+                <div class="col-md-12 header">
+                    <span>Trabaja con nosotros</span>
+                </div>
+            </div>
+            <div class="row body">
+                <div class="col-md-12">
+                    <h4>Diligencie el siguiente formulario nuestros operadores le responderán a la mayor brevedad
+                        posible</h4>
+                </div>
+                <div class="col-md-8 detail">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div growl reference="1" inline="true" class="row"></div>
+                            <form name="workwithUsForm" ng-submit="work.submit(workwithUsForm,work.form)">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="form-group col-md-12"
+                                                 ng-class="( workwithUsForm.name.$dirty ? (workwithUsForm.name.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                <label for="inputName">* Nombres:</label>
+                                                <input type="text" class="form-control" id="inputName" name="name"
+                                                       placeholder="Nombres" ng-model="work.form.name" required>
+                                                <error-messages name="workwithUsForm.name"></error-messages>
+                                            </div>
+
+                                            <div class="form-group col-md-12"
+                                                 ng-class="( workwithUsForm.lastName.$dirty ? (workwithUsForm.lastName.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                <label for="lastName">* Apellidos:</label>
+                                                <input type="text" class="form-control" id="lastName" name="lastName"
+                                                       placeholder="Apellidos" ng-model="work.form.lastname" required>
+                                                <error-messages name="workwithUsForm.lastName"></error-messages>
+                                            </div>
+
+                                            <div class="form-group col-md-12"
+                                                 ng-class="( workwithUsForm.email.$dirty ? (workwithUsForm.email.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                <label for="inputEmail">* Correo electrónico:</label>
+                                                <input type="email" class="form-control" id="inputEmail" name="email"
+                                                       placeholder="Email" ng-model="work.form.email" required>
+                                                <error-messages name="workwithUsForm.email"></error-messages>
+                                            </div>
+
+                                            <div class="form-group col-md-12"
+                                                 ng-class="( workwithUsForm.identity.$dirty ? (workwithUsForm.identity.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                <label for="identity">Documento de identidad:</label>
+                                                <input type="number" class="form-control" id="identity" name="identity"
+                                                       placeholder="Documento de Identidad"
+                                                       ng-model="work.form.identity" required>
+                                                <error-messages name="workwithUsForm.identity"></error-messages>
+                                            </div>
+
+                                            <div class="form-group col-md-12"
+                                                 ng-class="( workwithUsForm.address.$dirty ? (workwithUsForm.address.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                <label for="inputAddress">* Dirección residencia:</label>
+                                                <input type="text" class="form-control" id="inputAddress" name="address"
+                                                       ng-model="work.form.address" placeholder="Dirección" required>
+                                                <error-messages name="workwithUsForm.address"></error-messages>
+                                            </div>
+
+                                            <div class="form-group col-md-12"
+                                                 ng-class="( workwithUsForm.mobile.$dirty ? (workwithUsForm.mobile.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                <label for="inputMobile">* Teléfono móvil:</label>
+                                                <input type="number" class="form-control" id="inputMobile" name="mobile"
+                                                       placeholder="Teléfono Móvil" ng-model="work.form.mobile"
+                                                       required>
+                                                <error-messages name="workwithUsForm.mobile"></error-messages>
+                                            </div>
+
+                                            <div class="form-group col-md-12">
+                                                <div vc-recaptcha theme="light" ng-model="work.form.captcha"
+                                                     key="work.model.key" on-create="work.setWidgetId(widgetId)"
+                                                     on-success="work.setResponse(response)"
+                                                     on-expire="work.cbExpiration()" lang="es"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="form-group col-md-12"
+                                                 ng-class="( workwithUsForm.department.$dirty ? (workwithUsForm.department.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                <label for="inputDepartment">* Departamento comercial:</label>
+                                                <select class="form-control" id="inputDepartment" name="department"
+                                                        ng-model="work.form.department" ng-change="work.setDepartment()"
+                                                        ng-options="department.depto_id as department.depto_nom for department in work.departments"
+                                                        required>
+                                                    <option value="">Escoja opción</option>
+                                                </select>
+                                                <error-messages name="workwithUsForm.department"
+                                                                class="error-select"></error-messages>
+                                            </div>
+                                            <div class="form-group col-md-12"
+                                                 ng-class="( workwithUsForm.city.$dirty ? (workwithUsForm.city.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                <label for="inputCity">* Ciudad comercial:</label>
+                                                <select class="form-control" id="inputCity" name="city"
+                                                        ng-model="work.form.city"
+                                                        ng-options="city.ciudad_id as city.ciudad_nom for city in work.cities"
+                                                        required>
+                                                    <option value="">Escoja opción</option>
+                                                </select>
+                                                <error-messages name="workwithUsForm.city"
+                                                                class="error-select"></error-messages>
+                                            </div>
+                                            <div class="form-group col-md-12"
+                                                 ng-class="( workwithUsForm.phone.$dirty ? (workwithUsForm.phone.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                <label for="phone">Teléfono (opcional):</label>
+                                                <input type="number" class="form-control" id="phone" name="phone"
+                                                       placeholder="Teléfono" ng-model="work.form.phone">
+                                                <error-messages name="workwithUsForm.phone"></error-messages>
+                                            </div>
+                                            <div class="col-md-12 form-group"
+                                                 ng-class="( workwithUsForm.body.$dirty ? (workwithUsForm.body.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                <label for="inputMessage">Texto del mensaje:</label>
+                                                <textarea id="inputMessage" name="body" ng-model="work.form.body"
+                                                          ng-minlength='10' class="form-control" rows="9"
+                                                          required></textarea>
+                                                <error-messages name="workwithUsForm.body"></error-messages>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <button type="submit" class="btn btn-block btn-wplay"
+                                                ng-disabled="!workwithUsForm.$valid">Enviar
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div footer></div>

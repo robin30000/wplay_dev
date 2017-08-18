@@ -1,0 +1,136 @@
+<div class="container-fluid">
+    <div header></div>
+</div>
+<div class="container-fluid content home">
+    <div class="row">
+        <div class="slide slide-principal">
+            <div>
+                <audio src="app/sound/sound_wplay.ogg"
+                       autoplay>
+                    Your browser does not support the <code>audio</code> element.
+                </audio>
+                <div style="height: 100%; margin: 8px 0" class="img-responsive">
+                    <div uib-carousel active="home.activeppal" interval="home.intervalppal"
+                         no-wrap="home.noWrapSlidesppal">
+                        <div uib-slide ng-repeat="slide in home.slides track by slide.id" index="slide.id">
+                            <a href="{{slide.url}}">
+                                <img ng-src="{{slide.image}}" style="margin:auto; width: 100%" class="img-responsive">
+                                <div class="carousel-caption">
+                                    <h4>{{slide.text}}</h4>
+                                    <p>{{slide.description}}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row home-bottom">
+        <div class="col-md-2">
+            <div class="slide slide-bottom">
+                <div>
+                    <div style="height: 100%; margin: 8px 0" class="img-responsive">
+                        <div uib-carousel active="home.activeb1" interval="home.intervalb1"
+                             no-wrap="home.noWrapSlidesb1">
+                            <div uib-slide ng-repeat="slide in home.slides_bottom.SliderBottom1 track by slide.id"
+                                 index="slide.id">
+                                <a href="{{slide.url}}" target="_blank">
+                                    <img ng-src="{{slide.image}}" style="margin:auto; width: 100%"
+                                         class="img-responsive">
+                                    <div class="carousel-caption">
+                                        <h4>{{slide.text}}</h4>
+                                        <p>{{slide.description}}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="slide slide-bottom">
+                <div>
+                    <div style="height: 100%; margin: 8px 0" class="img-responsive">
+                        <div uib-carousel active="home.activeb2" interval="home.intervalb2"
+                             no-wrap="home.noWrapSlidesb2">
+                            <div uib-slide ng-repeat="slide in home.slides_bottom.SliderBottom2  track by slide.id"
+                                 index="slide.id">
+                                <a href="{{slide.url}}" target="_blank">
+
+                                    <img ng-src="{{slide.image}}" style="margin:auto; width: 100%"
+                                         class="img-responsive">
+                                    <div class="carousel-caption">
+                                        <h4>{{slide.text}}</h4>
+                                        <p>{{slide.description}}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="slide slide-bottom">
+                <div>
+                    <div style="height: 100%; margin: 8px 0" class="img-responsive">
+                        <div uib-carousel active="home.activeb3" interval="home.intervalb3"
+                             no-wrap="home.noWrapSlidesb3">
+                            <div uib-slide ng-repeat="slide in home.slides_bottom.SliderBottom3 track by slide.id"
+                                 index="slide.id">
+                                <a href="{{slide.url}}" target="_blank">
+
+                                    <img ng-src="{{slide.image}}" style="margin:auto; width: 100%"
+                                         class="img-responsive">
+                                    <div class="carousel-caption">
+                                        <h4>{{slide.text}}</h4>
+                                        <p>{{slide.description}}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="slide slide-bottom">
+                <div>
+                    <div style="height: 100%; margin: 8px 0" class="img-responsive">
+                        <div uib-carousel active="home.activeb4" interval="home.intervalb4"
+                             no-wrap="home.noWrapSlidesb4">
+                            <div uib-slide ng-repeat="slide in home.slides_bottom.SliderBottom4 track by slide.id"
+                                 index="slide.id">
+                                <a href="{{slide.url}}" target="_blank">
+
+                                    <img ng-src="{{slide.image}}" style="margin:auto; width: 100%"
+                                         class="img-responsive">
+                                    <div class="carousel-caption">
+                                        <h4>{{slide.text}}</h4>
+                                        <p>{{slide.description}}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="">
+                <div>
+                    <div style="" class="puntos-autorizados">
+                        <a href="/localizacion" target="_blank">
+                            <img ng-src="app/img/puntos-autorizados.png" style="" class="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div footer></div>

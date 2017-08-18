@@ -1,0 +1,125 @@
+<div class="container-fluid">
+    <div header></div>
+</div>
+<style>
+    .red {
+        color: darkred;
+    }
+
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="game-account">
+            <div class="hidden-xs row">
+                <div class="col-md-12 header">
+                    <span>Cuenta de Juego</span>
+                </div>
+            </div>
+            <div class="row body">
+                <div submenu></div>
+                <div class="col-md-12 header">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span>Generación Documento de Retiro</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 detail">
+                    <div class="row">
+                        <div class="col-md-12 warning" style="margin-bottom: 20px">
+                            <div class="row">
+                                <div class="col-xs-2 col-sm-1">
+                                    <img class="img-responsive center-block" src="app/img/account/warning.png"></img>
+                                </div>
+                                <div class="col-xs-10 col-sm-11">
+                                    <div class="text-warning">
+                    <span>
+                        <b> Nota Importante:</b>  una vez genere su documento de retiro, tenga en cuenta:
+                        <ul>
+                            <li>Solo podrá generarse un documento de retiro por día. </li>
+                            <li>Si el valor a retirar del saldo premios es igual o superior a $1.529.232 (48 UVT) deberás pagar el 20% del documento correspondiente a retención en la fuente.</li>
+                            <li>Si deseas retirar del saldo créditos deberás pagar el 10% del valor del documento que corresponde al costo administrativo.</li>
+                            <li>Si el monto del documento de retiro es igual o superior a $2.000.000, este  pasará a verificación. Mientras requiera aprobación el documento no podrá ser pagado.</li>
+                            <li>Las trasferencias bancarias únicamente podrán realizarse si el valor del documento de retiro generado por el usuario es igual o superior a $500.000 y no podrán ser canceladas.</li>
+                        </ul>
+                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div growl reference="1" inline="true" class="col-sm-12"></div>
+                        <div class="col-md-2 col-sm-2">
+                            <div class="row">
+
+                                <form name="frRetirement" class="form-horizontal" autocomplete="off"
+                                      ng-submit="banca.submit(frRetirement)" style="padding: 0 20px">
+                                    <div class="form-group">
+                                        <label for="paymentMethod">Forma de Pago:</label>
+                                        <select class="form-control" id="paymentMethod"
+                                                ng-model="banca.paymentMethod"
+                                                ng-options="paymentMethod.value as paymentMethod.option for paymentMethod in banca.paymentMethods"
+                                                required>
+                                            <option value="">Seleccione</option>
+                                        </select>
+                                    </div>
+                                    <div ng-if="banca.paymentMethod == 1" class="form-group">
+                                        <label for="accountRegistered">Cuentas
+                                            Registradas:</label>
+                                        <select class="form-control" id="accountRegistered" ng-model="banca.account"
+                                                ng-options="account.id as account.cuenta for account in banca.accounts"
+                                                required>
+                                            <option value="">Seleccione</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="BalanceType">Tipo de Saldo:</label>
+                                        <select class="form-control" id="BalanceType" ng-model="banca.cashMethod"
+                                                ng-options="cashMethod.value as cashMethod.option for cashMethod in banca.cashMethods"
+                                                required>
+                                            <option value="">Seleccione</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="quantity">Valor a retirar:</label>
+                                        <input type="text" class="form-control" id="quantity" name="quantity"
+                                               ng-model="banca.quantity" placeholder="Valor a retirar"
+                                               numeric-only autocomplete="off" required>
+                                        <error-messages name="frRetirement.quantity"></error-messages>
+                                    </div>
+                                    <div class="form-group">
+                                        <h4>Pregunta de Seguridad</h4>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="safetyQuestion"
+                                               class="">{{banca.question.pregunta}}</label>
+                                        <div class="">
+                                            <input type="password" class="form-control" id="safetyQuestion"
+                                                   ng-model="banca.question.answer" placeholder="Respuesta" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="">
+                                            <button type="submit" ng-disabled="!frRetirement.$valid"
+                                                    class="btn btn-wplay btn-block">Generar Documento
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-sm-10">
+                            <label>Saldo premios: <span>{{banca.balance | currency:$:0}}</span></label><br>
+                            <label>Saldo créditos:
+                                <span>{{banca.balanceCredit | currency:$:0}}</span></label>
+
+                            <div ui-grid="banca.gridOptions" ui-grid-pagination class="ag-fresh"
+                                 style="height:250px; color: #ffffff"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div footer></div>

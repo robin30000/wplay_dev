@@ -1,0 +1,175 @@
+<div class="container-fluid">
+    <div header="">
+    </div>
+</div>
+
+<style>
+    /*.glyphicon {
+        font-size: 25px;
+        color: #8a6d3b;
+    }
+
+    .wf:nth-last-child(-n+12) > .glyphicon {
+        display: none;
+
+    }*/
+
+    .buscar {
+        cursor: pointer;
+    }
+
+    .buscar:hover {
+        color: silver;
+    }
+
+    #inputDate {
+        margin-right: 0;
+        padding-right: 0;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="game-info ranking">
+            <div class="hidden-xs row">
+                <div class="col-md-12 header">
+                    <span>
+                       SEGUNDAS OLIMPIADAS WPLAY
+                    </span>
+                </div>
+            </div>
+            <div class="row body">
+                <div class="col-md-12 header">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span>
+                                Ranking
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 detail">
+                    <div class="row">
+                        <div class="col-md-12 warning">
+                            <div class="row">
+                                <div class="col-xs-2 col-sm-1">
+                                    <img class="img-responsive center-block" src="app/img/account/warning.png"/>
+                                </div>
+                                <div class="col-xs-10 col-sm-11">
+                                    <div class="text-warning">
+                                        <span>
+                                            Mensaje: No olvide actualizar sus datos, usuario que no haya actualizado sus datos no podrá participar de los premios
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="col-sm-12">
+                                <h3>
+                                    Ranking general
+                                </h3>
+                                <div class="top-players wf" ng-repeat="user in ranking.top">
+                                    <span class="badge badge-position">
+                                        {{user.posicion}}
+                                    </span>
+                                    <!--<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>-->
+                                    <h4 ng-bind-html="user.nombre | capitalize">
+                                    </h4>
+                                    <span>
+                                        {{user.valor | currency:"$":0}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="col-sm-12">
+                                <h3>
+                                    Ranking hoy
+                                </h3>
+                                <div class="top-players wf" ng-repeat="(key, user) in ranking.rankingHoy">
+                                    <span class="badge badge-position">
+                                        {{key + 1}}
+                                    </span>
+                                    <!--<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>-->
+                                    <h4 ng-bind-html="user.nombre | capitalize">
+                                    </h4>
+                                    <span>
+                                        {{user.valor | currency:"$":0}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <h3>
+                                Consulta dias anteriores
+                            </h3>
+                            <div class="fecha">
+                                <div class="row">
+                                    <div class="col-xs-8" id="inputDate">
+                                        <input class="form-control" close-text="Close"
+                                               datepicker-options="ranking.dateOptions" id="inputDateExp"
+                                               is-open="ranking.dateday.opened" name="date" ng-model="ranking.dateday"
+                                               ng-required="true" placeholder="Seleccione una fecha" type="text"
+                                               uib-datepicker-popup="{{ranking.format}}"/>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <button class="btn btn-default" ng-click="ranking.open(ranking.dateday)"
+                                                type="button">
+                                            <i class="glyphicon glyphicon-calendar" style="font-size: 15px; color: #000">
+                                            </i>
+                                        </button>
+                                    </div>
+
+                                    <div class="col-xs-2">
+                                            <span><a ng-click="ranking.consultardiaWin()" class="buscar"><i
+                                                    class="glyphicon glyphicon-search"
+                                                    style="font-size: 30px; color: white"></i></a></span>
+                                    </div>
+
+
+                                </div>
+                                <div class="tab-pane active" id="ganadoresxdia" role="tabpanel">
+                                    <div class="top-players" ng-repeat="user in ranking.winnerday">
+                                        <span class="badge badge-position">
+                                            {{user.posicion}}
+                                        </span>
+                                        <h4 ng-bind-html="user.nombre | capitalize">
+                                        </h4>
+                                        <span>
+                                            {{user.valor | currency:"$":0}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3" ng-if="ranking.myData.length" ng-show="authenticated">
+                            <h3>
+                                Mi Posición
+                            </h3>
+                            <div class="top-players" ng-repeat="user in ranking.myData">
+                                    <span class="badge badge-position">
+                                        {{user.posicion}}
+                                    </span>
+
+                                <h4>
+                                    {{name}}
+                                </h4>
+                                <span>
+                                        {{user.valor | currency:"$":0}}
+                                </span> <br>
+                                <span ng-if="user.tipo_registro == 0" style="color: #8a6d3b;"><b>Para participar de los premios debes de completar tus datos</b></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div footer="">
+</div>

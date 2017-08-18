@@ -1,0 +1,307 @@
+<div>
+    <div class="row header" itemscope itemtype="http://schema.org/Organization">
+        <div class="visible-xs-block col-xs-3 text-center">
+            <button type="button" ng-class="{'activeMenu': header.activeMenu == 1 }" class="navbar-toggle"
+                    ng-click="header.viewMenu()">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6 col-sm-3 col-md-2 center-block">
+                <a href="inicio" itemprop="logo" alt="logo wplay">
+                    <div class="logo"></div>
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-9 col-md-10" style="margin-top: 2rem">
+                <div class="hidden-xs">
+                    <div class="row">
+                        <div ng-hide="authenticated" class="col-sm-10 col-md-10 text-right">
+                            <div class="div-promo">
+                                <a href="https://promo.wplay.co">
+                                </a>
+                            </div>
+
+                            <div class="div-login">
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="title-login">Ingreso</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <form validate name="loginForm" ng-submit="header.login.submit(user)">
+                                            <input type="email" class="form-control" id="inputEmail"
+                                                   ng-model="user.usuario"
+                                                   placeholder="Usuario" required>
+                                            <input type="{{header.login.inputType}}" class="form-control"
+                                                   id="inputPassword"
+                                                   ng-model="user.clave" placeholder="Contraseña" required>
+                                            <button type="submit" ng-disabled="!loginForm.$valid"
+                                                    class="btn btn-block btn-wplay">
+                                                <span class="title">Entrar</span>
+                                                <div class="triangulo"></div>
+                                            </button>
+                                        </form>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <a href="https://wplay.co/registro" class="registrate">Registrarse</a>
+                                        <a ng-click="header.login.forgetPassword()" class="olvido-clave">¿Olvidaste tu
+                                            contraseña?</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div ng-show="authenticated" class="col-sm-12 col-md-12 text-right">
+                            <div class="row">
+                                <div class="col-sm-5 col-md-5 block-info">
+                                    <div class="col-sm-10">
+                                        <span class="title pull-left">Saldo premios: {{saldo | currency:"$":0}} </span><br>
+                                        <span class="title pull-left">Saldo créditos: {{creditoParticipacion | currency:"$":0}} </span><br>
+                                        <span class="title pull-left">Saldo bonos: &nbsp;&nbsp; {{saldoBono | currency:"$":0}}</span>
+                                    </div>
+                                    <div class="col-sm-2 pull-right">
+                                        <button ng-click="header.getSaldo()" class="btn btn-link btn-message"
+                                                title="Recargar">
+                                            <span class="glyphicon glyphicon-refresh info-user"></span>
+                                        </button>
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-5 col-md-5 block-info">
+                                    <div class="col-sm-10">
+                                        <span class="pull-left">Nombre: {{name}}</span><br>
+                                        <span class="pull-left">C.C: {{identity}}</span>
+                                    </div>
+                                    <div class="col-sm-2 pull-right">
+                                        <button ng-click="header.viewMessages()" class="btn btn-link btn-message">
+                                            <span class="glyphicon glyphicon-envelope info-user"></span>
+                                        </button>
+                                        <span class="badge badge-notify">{{messages}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2 col-md-2 header-button">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12">
+                                            <button type="submit" ng-click="header.logout()"
+                                                    class="btn btn-wplay btn-block">
+                                                <span class="title">Salir</span>
+                                                <div class="triangulo"></div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="hidden-xs col-md-12">
+                <div class="row">
+                    <div class="hidden-xs col-sm-10 col-sm-offset-2 col-md-7 col-md-offset-2 menu">
+                        <ul class="menu-min-max" style="margin-bottom: -20px">
+
+                            <li class="">
+                                <a class="btn" ng-class="header.getClass('/')" href="home">
+                                    <div ng-class="header.getClass('/')" class="icons-menu icon-home text-hide">Home
+                                    </div>
+                                    <span>Home</span>
+                                </a>
+                            </li>
+
+                            <li ng-show="authenticated" class="menu-block">
+                                <a class="btn" ng-class="header.getClass('/cuenta_juego') || header.getClass('/info')"
+                                   href="#">
+                                    <div ng-class="header.getClass('/cuenta_juego') || header.getClass('/info')"
+                                         class="icons-menu icon-menu text-hide">Menú
+                                    </div>
+                                    <span>Menú</span>
+                                </a>
+                                <div class="submenu text-left">
+                                    <div ng-show="authenticated" class="submenu-block">
+                                        <h4>Cuenta de juego</h4>
+                                        <ul class="">
+                                            <li><a href="cuenta-juego/mis-datos">Mis datos</a></li>
+                                            <li><a href="cuenta-juego/cambiar-contrasena">Cambiar contraseña</a></li>
+                                            <li><a href="cuenta-juego/banca/registrar/1">Registrar cuenta</a></li>
+                                            <li><a href="cuenta-juego/banca/deposito">Realizar deposito</a></li>
+                                            <li><a href="cuenta-juego/banca/retiro">Generar doc. retiro</a>
+                                            </li>
+                                            <li><a href="/cuenta-juego/banca/cancela-doc-retiro">Cancelar
+                                                doc. retiro</a></li>
+                                            <li><a href="cuenta-juego/autoexclusion/1">AutoExclusión</a></li>
+                                            <li><a href="cuenta-juego/movimientos/1">Movimientos</a></li>
+                                            <li><a href="cuenta-juego/mensajeria">Mis mensajes</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="submenu-block">
+                                        <h4>Consultas</h4>
+                                        <ul class="">
+                                            <li><a href="info/consulta-apuestas">Consultas de apuestas</a></li>
+                                            <li><a href="info/terminos-condiciones">Términos y condiciones</a></li>
+                                            <li><a href="info/preguntas-frecuentes">Preguntas frecuentes</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <a class="btn" ng-class="header.getClass('/apuestas')" href="apuestas">
+                                    <div ng-class="header.getClass('/apuestas ')" class="icons-menu icon-bet text-hide">
+                                        Apuestas
+                                    </div>
+                                    <span>Apuestas</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="btn" ng-class="header.getClass('/apuestas-vivo')" href="apuestas-vivo">
+                                    <div ng-class="header.getClass('/apuestas-vivo')"
+                                         class="icons-menu icon-livebet text-hide">
+                                        Apuestas en vivo
+                                    </div>
+                                    <span>Apuestas en vivo </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="btn" ng-class="header.getClass('/results')" href="results">
+                                    <div ng-class="header.getClass('/results')"
+                                         class="icons-menu icon-results text-hide">
+                                        Resultados
+                                    </div>
+                                    <span>Resultados</span>
+                                </a>
+                            </li>
+
+                            <li ng-show="authenticated">
+                                <a class="btn active" href="cuenta-juego/banca/deposito">
+                                    <div ng-class="header.getClass('cuenta-juego/banca/deposito')"
+                                         class="icons-menu icon-deposit text-hide">
+                                        Recargas
+                                    </div>
+                                    <span>Recargas</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-hide="authenticated" class=" text-center div-header-responsive">
+            <div class="div-promo img-responsive">
+                <a href="https://promo.wplay.co">
+                </a>
+            </div>
+            <div class="div-login ">
+                <div class="row">
+                    <div class="col">
+                        <label class="title-login">Ingreso</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <form validate name="loginForm" ng-submit="header.login.submit(user)">
+
+                            <input type="email" class="form-control" id="inputEmail" ng-model="user.usuario"
+                                   placeholder="Usuario" required>
+                            <input type="{{header.login.inputType}}" class="form-control" id="inputPassword"
+                                   ng-model="user.clave" placeholder="Contraseña" required>
+                            <button type="submit" ng-disabled="!loginForm.$valid" class="btn btn-block btn-wplay">
+                                <span class="title">Entrar</span>
+                                <div class="triangulo"></div>
+
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <a href="https://wplay.co/registro" ng-click="header.open()" class="registrate">Registrarse</a>
+                        <a href="#" class="olvido-clave">¿Olvidaste tu contraseña?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="authenticated" class="visible-xs-block col-xs-12 text-center">
+            <div class="row">
+                <div class="block-info col-xs-5 col-sm-4 center-block header-saldos" style="padding: 0">
+                    <button ng-click="header.getSaldo()" class="btn btn-link btn-message btn-xs" title="Recargar saldo">
+                        <span class="glyphicon glyphicon-refresh"></span>
+                    </button>
+                    <label><span class="">Premios:</span> <span
+                            class="numero">{{saldo | currency:"$":0}}</span></label>
+                    <label><span class="">Créditos:</span> <span class="numero">{{creditoParticipacion | currency:"$":0}}</span></label>
+                    <label><span class="">Bonos:</span> <span
+                            class="numero">{{saldoBono | currency:"$":0}}</span></label>
+                </div>
+                <div class="block-info col-xs-4 col-sm-4 center-block header-datos">
+                    <button ng-click="header.viewMessages()" class="btn btn-link btn-message">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                    </button>
+                    <span class="badge badge-notify">{{messages}}</span>
+                    <label class="pull-left"><span>{{name}}</span></label>
+                    <label class="pull-left"><span>C.C: {{identity}}</span></label>
+                </div>
+                <div class="col-xs-3 col-sm-4  header-button">
+                    <div class="row">
+                        <div class="col-xs-5 no-padding">
+
+                        </div>
+                        <div class="col-xs-10 col-xs-offset-1 no-padding">
+                            <button type="submit" ng-click="header.logout()" class="btn btn-wplay btn-block">
+                                <span class="title">Salir</span>
+                                <div class="triangulo"></div>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="line">
+        </div>
+    </div>
+    <div ng-show="authenticated" class="row info-time">
+        <div class="col-md-12 text-right">
+            <span>{{header.clock | date: 'longDate'}}</span>
+            <span>Hora: {{header.clock | date: 'mediumTime'}}</span>
+            <span>Tiempo conectado: {{header.timeConnected | filterTime }}</span>
+        </div>
+    </div>
+    <div ng-class="{'activeMenu': header.activeMenu == 1 }" class="visible-xs-block row mobileMenu">
+        <ul>
+            <li class="btn" ng-show="authenticated">
+                <a href="submenu/1">Menú</a>
+                <div class="menu"></div>
+            </li>
+            <li class="btn">
+                <a href="apuestas">Apuestas</a>
+                <div class="bets"></div>
+            </li>
+            <li class="btn">
+                <a href="results">Resultados</a>
+                <div class="scores"></div>
+            </li>
+            <li class="btn">
+                <a href="/localizacion">Puntos de venta</a>
+                <div class="btncontact"></div>
+            </li>
+        </ul>
+    </div>
+    <div growl limit-messages="1"></div>
+</div>

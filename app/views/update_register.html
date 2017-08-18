@@ -1,0 +1,405 @@
+<div class="container-fluid">
+    <div header></div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="register">
+            <div class="row">
+                <div class="col-md-12 header">
+                    <span>Actualización de datos</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 body">
+                    <div class="detail">
+                        <div class="row">
+                            <span class="col-md-12 title">Actualización de datos</span>
+                            <p class="col-md-12">La información suministrada en este formulario, será tenida en cuenta
+                                al momento de redimir sus ganancias, por ello la veracidad de la misma, es factor
+                                fundamental que nos reserva el derecho a otorgar y pagar los premios respectivos. Lo
+                                invitamos a diligenciar todos los datos que les solicitamos, y si tiene alguna duda al
+                                respecto, por favor comuníquese con nosotros por los canales que tenemos dispuestos para
+                                usted (chat en línea, correo electrónico)</p>
+                            <label class="col-md-12">Datos de usuario: Los campos con (*) son obligatorios</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row steps text-center">
+                                    <div class="col-xs-6 col-xs-offset-0 col-md-4 col-md-offset-2">
+                                        <span ng-click="update.selectTab(1)" class="glyphicon"
+                                              ng-class="{'current': update.activeTab == 1 }">1</span>
+                                        <div class="line-right"></div>
+                                    </div>
+                                    <div class="col-xs-6 col-md-4">
+                                        <div class="line-left"></div>
+                                        <span ng-click="update.selectTab(2)" class="glyphicon"
+                                              ng-class="{'current': update.activeTab == 2 }">2</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div growl reference="1" inline="true" class="col-md-12"></div>
+                            <div ng-class="{'current': update.activeTab == 1 }" class="tab-1">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form name="stepOneForm" ng-submit="update.nextStep()">
+                                                <div class="row">
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.firstName.$dirty ? (stepOneForm.firstName.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputFirstName">* Primer Nombre:</label>
+                                                        <input type="text" class="form-control" id="inputFirstName"
+                                                               name="firstName" placeholder="Primer Nombre"
+                                                               ng-model="update.stepOne.firstName" required readonly>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label for="inputSecondName">Segundo Nombre:</label>
+                                                        <input type="text" class="form-control" id="inputSecondName"
+                                                               placeholder="Segundo Nombre"
+                                                               ng-model="update.stepOne.secondName" readonly>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.lastname.$dirty ? (stepOneForm.lastname.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputLastName">* Primer Apellido:</label>
+                                                        <input type="text" class="form-control" id="inputLastName"
+                                                               name="lastname" placeholder="Primer Apellido"
+                                                               ng-model="update.stepOne.lastname" required readonly>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label for="inputSecondLastName">Segundo Apellido:</label>
+                                                        <input type="text" class="form-control" id="inputSecondLastName"
+                                                               placeholder="Segundo Apellido"
+                                                               ng-model="update.stepOne.secondLastname" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.gender.$dirty ? (stepOneForm.gender.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputGender">* Sexo:</label>
+                                                        <select class="form-control" name="gender" id="inputGender"
+                                                                ng-model="update.stepOne.gender" data-mobile="true"
+                                                                ng-options="gender.value as gender.option for gender in update.gender">
+                                                            <option value="">Escoja opción</option>
+                                                        </select>
+                                                        <error-messages name="stepOneForm.gender"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.documentType.$dirty ? (stepOneForm.documentType.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputDocumentType">* Tipo Documento:</label>
+                                                        <select class="form-control" name="documentType"
+                                                                id="inputDocumentType"
+                                                                ng-model="update.stepOne.documentType"
+                                                                data-mobile="true"
+                                                                ng-options="documentType.value as documentType.option for documentType in update.documentType"
+                                                                required>
+                                                            <option value="">Escoja opción</option>
+                                                        </select>
+                                                        <error-messages name="stepOneForm.documentType"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div ng-if="update.stepOne.documentType == 2"
+                                                         class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.duedate.$dirty ? (stepOneForm.duedate.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputDateExp">* Fecha Vencimiento:</label>
+                                                        <p class="input-group">
+                                                            <input type="text" name="duedate" class="form-control"
+                                                                   uib-datepicker-popup="{{update.format}}"
+                                                                   ng-model="update.stepOne.duedate"
+                                                                   is-open="update.duedate.opened"
+                                                                   datepicker-options="update.dateOptions"
+                                                                   ng-required="true" close-text="Close"/>
+                                                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default"
+                                        ng-click="update.open(update.duedate)"><i
+                                        class="glyphicon glyphicon-calendar"></i></button>
+                              </span>
+                                                        </p>
+                                                        <error-messages name="stepOneForm.duedate"
+                                                                        class="error-date"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.identity.$dirty ? (stepOneForm.identity.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputIdentity">* Nº Identificación:</label>
+                                                        <input type="text" class="form-control" id="inputIdentity"
+                                                               name="identity" placeholder="Documento Identidad"
+                                                               ng-model="update.stepOne.identity" numbers-only
+                                                               required ng-maxlength="12" minlength="6" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.departmentExp.$dirty ? (stepOneForm.departmentExp.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputDepartmentExp">* Departamento Expedición:
+                                                        </label>
+                                                        <select class="form-control" id="inputDepartmentExp"
+                                                                name="departmentExp"
+                                                                ng-model="update.stepOne.departmentExp"
+                                                                ng-change="update.setDepartmentExp()"
+                                                                ng-options="department.depto_id as department.depto_nom for department in update.departmentsDueDate"
+                                                                required>
+                                                            <option value="">Escoja opción</option>
+                                                        </select>
+                                                        <error-messages name="stepOneForm.departmentExp"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.city.$dirty ? (stepOneForm.city.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputCityExp">* Ciudad Expedición:</label>
+                                                        <select class="form-control" id="inputCityExp" name="city"
+                                                                ng-model="update.stepOne.city"
+                                                                ng-options="city.ciudad_id as city.ciudad_nom for city in update.citiesExp"
+                                                                required>
+                                                            <option value="">Escoja opción</option>
+                                                        </select>
+                                                        <error-messages name="stepOneForm.city"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepOneForm.date.$dirty ? (stepOneForm.date.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputDateExp">* Fecha Expedición:</label>
+                                                        <p class="input-group">
+                                                            <input type="text" name="date" class="form-control"
+                                                                   uib-datepicker-popup="{{update.format}}"
+                                                                   ng-model="update.stepOne.dateExp"
+                                                                   is-open="update.dateExp.opened"
+                                                                   datepicker-options="update.dateOptions"
+                                                                   ng-required="true" close-text="Close"
+                                                                   id="inputDateExp"/>
+                                                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default"
+                                        ng-click="update.open(update.dateExp)"><i
+                                        class="glyphicon glyphicon-calendar"></i></button>
+                              </span>
+                                                        </p>
+                                                        <error-messages name="stepOneForm.date"
+                                                                        class="error-date"></error-messages>
+                                                    </div>
+                                                    <!--<div class="form-group col-md-3">
+                                                        <label for="inputFile">Anexe copia Documento de
+                                                            Identidad</label>
+                                                        <input lang="es" type="file" id="inputFile"
+                                                               class="form-control">
+                                                    </div>-->
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-md-12">
+                                                        <button type="submit" class="btn btn-wplay"
+                                                                ng-disabled="!stepOneForm.$valid">Continuar
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-class="{'current': update.activeTab == 2 }" class="tab-2">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form name="stepTwoForm" ng-submit="update.submit()">
+                                                <div class="row">
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepTwoForm.country.$dirty ? (stepTwoForm.country.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputCountry">* Nacionalidad:</label>
+                                                        <select class="form-control" id="inputCountry"
+                                                                name="countryFrom"
+                                                                ng-options="country.pais_id as country.pais_nom for country in update.countries"
+                                                                ng-model="update.stepTwo.country"
+                                                                ng-change="update.setCountry()"
+                                                                required>
+                                                            <option value="">Seleccione opción</option>
+                                                        </select>
+                                                        <error-messages name="stepTwoForm.country"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepTwoForm.departmentFrom.$dirty ? (stepTwoForm.departmentFrom.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputDepartmentFrom">* Departamento Nacimiento:
+                                                        </label>
+                                                        <select class="form-control" id="inputDepartmentFrom"
+                                                                name="departmentFrom"
+                                                                ng-model="update.stepTwo.departmentFrom"
+                                                                ng-change="update.setDepartmentFrom()"
+                                                                ng-options="department.depto_id as department.depto_nom for department in update.departmentsFrom"
+                                                                required>
+                                                            <option value="">Seleccione opción</option>
+                                                        </select>
+                                                        <error-messages name="stepTwoForm.departmentFrom"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepTwoForm.cityFrom.$dirty ? (stepTwoForm.cityFrom.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputCityFrom">* Ciudad de Nacimiento:</label>
+                                                        <select class="form-control" id="inputCityFrom" name="cityFrom"
+                                                                ng-model="update.stepTwo.cityFrom"
+                                                                ng-options="city.ciudad_id as city.ciudad_nom for city in update.citiesFrom"
+                                                                required>
+                                                            <option value="">Seleccione opción</option>
+                                                        </select>
+                                                        <error-messages name="stepTwoForm.cityFrom"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepTwoForm.birthDate.$dirty ? (stepTwoForm.birthDate.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputBirthDate">* Fecha Nacimiento:</label>
+                                                        <p class="input-group">
+                                                            <input type="text" name="birthDate" class="form-control"
+                                                                   uib-datepicker-popup="{{update.format}}"
+                                                                   ng-model="update.stepTwo.birthDate"
+                                                                   is-open="update.birthDate.opened"
+                                                                   datepicker-options="update.dateOptions"
+                                                                   ng-required="true" close-text="Close"
+                                                                   id="inputBirthDate"/>
+                                                            <span class="input-group-btn">
+                                                                <button type="button" class="btn btn-default"
+                                                                        ng-click="update.open(update.birthDate)"><i
+                                                                        class="glyphicon glyphicon-calendar"></i></button>
+                                                              </span>
+                                                        </p>
+                                                        <error-messages name="stepTwoForm.birthDate"
+                                                                        class="error-date"></error-messages>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepTwoForm.department.$dirty ? (stepTwoForm.department.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputDepartment">* Departamento Residencia:</label>
+                                                        <select class="form-control" name="department"
+                                                                id="inputDepartment"
+                                                                ng-model="update.stepTwo.department"
+                                                                ng-change="update.setDepartment()"
+                                                                ng-options="department.depto_id as department.depto_nom for department in update.departments"
+                                                                required>
+                                                            <option value="">Seleccion opción</option>
+                                                        </select>
+                                                        <error-messages name="stepTwoForm.department"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepTwoForm.city.$dirty ? (stepTwoForm.city.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputCity">* Ciudad Residencia:</label>
+                                                        <select class="form-control" id="inputCity" name="city"
+                                                                ng-model="update.stepTwo.city"
+                                                                ng-options="city.ciudad_id as city.ciudad_nom for city in update.cities"
+                                                                required>
+                                                            <option value="">Seleccione opción</option>
+                                                        </select>
+                                                        <error-messages name="stepTwoForm.city"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepTwoForm.zipcode.$dirty ? (stepTwoForm.zipcode.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputZipcode">* Código Postal</label>
+                                                        <select class="form-control" id="inputZipcode" name="zipcode"
+                                                                ng-model="update.stepTwo.zipcode"
+                                                                ng-options="zipcode.id_codigo_postal as zipcode.codigos for zipcode in update.zipcodes"
+                                                                required>
+                                                            <option value="">Seleccione opción</option>
+                                                        </select>
+                                                        <error-messages name="stepTwoForm.zipcode"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div class="form-group col-md-3"
+                                                         ng-class="( stepTwoForm.address.$dirty ? (stepTwoForm.address.$valid ? 'has-success has-feedback' : 'has-error has-feedback' ) : ' ')">
+                                                        <label for="inputAddress">* Dirección Residencia:</label>
+                                                        <input type="text" class="form-control" id="inputAddress"
+                                                               name="address" ng-model="update.stepTwo.address"
+                                                               placeholder="Dirección" required>
+                                                        <error-messages name="stepTwoForm.address"></error-messages>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div ng-class="stepTwoForm.password.$dirty ? stepTwoForm.password.$valid ? 'has-success' : 'has-error': ''"
+                                                         class="form-group col-md-3">
+                                                        <label for="inputPassword">* Contraseña:</label>
+                                                        <input type="password" class="form-control" id="inputPassword"
+                                                               name="password" placeholder="Contraseña"
+                                                               ng-model="update.stepTwo.password" required
+                                                               ng-pattern="/(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[a-zA-Z]).*$/">
+                                                        <error-messages name="stepTwoForm.password"></error-messages>
+                                                    </div>
+
+                                                    <div ng-class="stepTwoForm.passwordc.$dirty ? stepTwoForm.passwordc.$valid ? 'has-success' : 'has-error': ''"
+                                                         class="form-group col-md-3">
+                                                        <label for="inputPassword2">* Confirmar Contraseña:</label>
+                                                        <input type="password" class="form-control" id="inputPassword2"
+                                                               name="passwordc" placeholder="Contraseña"
+                                                               ng-model="update.stepTwo.passwordc"
+                                                               equal="update.stepTwo.password" required
+                                                               ng-paste="$event.preventDefault()">
+                                                        <error-messages name="stepTwoForm.passwordc"></error-messages>
+                                                    </div>
+                                                    <div ng-class="stepTwoForm.phone.$dirty ? stepTwoForm.phone.$valid ? 'has-success' : 'has-error': ''"
+                                                         class="form-group col-md-3">
+                                                        <label for="inputTel">Teléfono Fijo:</label>
+                                                        <input type="text" class="form-control" id="inputTel"
+                                                               name="phone" placeholder="Teléfono"
+                                                               ng-model="update.stepTwo.phone" numbers-only
+                                                               ng-maxlength="12" minlength="6">
+                                                        <error-messages name="stepTwoForm.phone"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                    <div ng-class="stepTwoForm.mobile.$dirty ? stepTwoForm.mobile.$valid ? 'has-success' : 'has-error': ''"
+                                                         class="form-group col-md-3">
+                                                        <label for="inputMobile">* Teléfono Movil:</label>
+                                                        <input type="text" class="form-control" id="inputMobile"
+                                                               name="mobile" placeholder="Celular"
+                                                               ng-model="update.stepTwo.mobile" numbers-only
+                                                               required ng-maxlength="12" minlength="6">
+                                                        <error-messages name="stepTwoForm.mobile"
+                                                                        class="error-select"></error-messages>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <!--<div class="form-group col-md-4">
+                                                        <div vc-recaptcha theme="'light'" key="update.model.key"
+                                                             on-create="update.setWidgetId(widgetId)"
+                                                             on-success="update.setResponse(response)"
+                                                             on-expire="update.cbExpiration()" lang="es"></div>
+                                                    </div>-->
+                                                    <div class="form-group col-md-12">
+                                                        <ul style="list-style: none; height: 50px;">
+                                                            <li>
+                                                                <input class="col-md-1" type="checkbox"
+                                                                       ng-model="update.stepThree.des" required>Declaro
+                                                                que no poseo enfermedades mentales ni adicción al juego
+                                                            </li>
+                                                            <li>
+                                                                <div class="accept">
+                                                                    <input class="col-md-1" type="checkbox"
+                                                                           ng-model="update.stepTwo.tyc" required>Soy
+                                                                    mayor de 18 años y he leído y aceptado los <a
+                                                                        ng-click="update.openTerms()">términos y
+                                                                    condiciones</a> generales de wplay.co
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="form-group col-md-12 text-center">
+                                                        <button type="submit" class="btn btn-wplay"
+                                                                ng-disabled="!stepOneForm.$valid || !stepTwoForm.$valid">
+                                                            Actualizar datos
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<h1>{{ $ctrl.hello }}</h1>-->
+<div footer></div>
